@@ -1,11 +1,12 @@
 {
-  "name": "voku/soundex",
-  "description": "Twig extension for XSS protection.",
+  "name": "voku/phonetic-algorithms",
+  "description": "Phonetic-Algorithms for fuzzy searching | PHP",
   "keywords": [
     "phonetic",
-    "soundex",
+    "Kölner Phonetik",
     "phonetic",
     "algorithm",
+    "metaphone",
     "Homophone"
   ],
   "type": "library",
