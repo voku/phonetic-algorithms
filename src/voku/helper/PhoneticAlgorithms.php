@@ -211,15 +211,7 @@ final class PhoneticAlgorithms
           $code .= '1';
           break;
         case 'p':
-          if ($x + 1 < $wordlen) {
-            if ($char[$x + 1] == 'h') {
-              $code .= '3';
-            } else {
-              $code .= '1';
-            }
-          } else {
-            $code .= '1';
-          }
+          $code .= '1';
           break;
         case 'd':
         case 't':
