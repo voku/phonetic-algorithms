@@ -61,7 +61,15 @@ You can use the "*_phonetic_sentence"-method to process sentences.
 use voku\helper\PhoneticAlgorithms;
 
 $string = 'Ein Satz mit vielen Wortern';
-PhoneticAlgorithms::german_phonetic_sentence($string); // array('06', '8', '62', '356', '37276')
+PhoneticAlgorithms::german_phonetic_sentence($string); 
+
+// [
+//   'Ein' => '06', 
+//   'Satz' => '8', 
+//   'mit' => '62', 
+//   'vielen' => '356', 
+//   'Wortern' => '37276'
+// ]
 ```
 
 ## History

@@ -390,19 +390,24 @@ class GermanPhoneticAlgorithmsTest extends \PHPUnit_Framework_TestCase
   public function testGermanPhoneticSentence()
   {
     $testArray = array(
-        'Müller Lüdenscheidt'         => array('657', '52682'),
-        'Müller-Lüdenscheidt'         => array('65752682'),
+        'Müller Lüdenscheidt'         => array('Müller' => '657', 'Lüdenscheidt' => '52682'),
+        'Müller-Lüdenscheidt'         => array('Müller-Lüdenscheidt' => '65752682'),
         "\n \t"                       => array(),
-        "test \xc2\x88"               => array('282'),
-        'Sind wir Düssel dorf'        => array('862', '37', '285', '273'),
-        'Sind wir Düssel dorf ?'      => array('862', '37', '285', '273'),
-        'Sind wir Düssel dorf?'       => array('862', '37', '285', '273'),
-        'Sind wir Düssel-dorf'        => array('862', '37', '285273'),
-        'Ã ¤'                         => array('0'),
-        'test'                        => array('282'),
-        'text'                        => array('2482'),
-        'Ein Satz mit vielen Wortern' => array('06', '8', '62', '356', '37276'),
-        '中 文 空 白'                     => array('064', '06', '064', '0'),
+        "test \xc2\x88"               => array('test' => '282'),
+        'Sind wir Düssel dorf'        => array('Sind' => '862', 'wir' => '37', 'Düssel' => '285', 'dorf' => '273'),
+        'Sind wir Düssel dorf ?'      => array('Sind' => '862', 'wir' => '37', 'Düssel' => '285', 'dorf' => '273'),
+        'Sind wir Düssel dorf?'       => array('Sind' => '862', 'wir' => '37', 'Düssel' => '285', 'dorf' => '273'),
+        'Sind wir Düssel-dorf'        => array('Sind' => '862', 'wir' => '37', 'Düssel-dorf' => '285273'),
+        'Ã ¤'                         => array('Ã' => '0'),
+        'test'                        => array('test' => '282'),
+        'text'                        => array('text' => '2482'),
+        'Ein Satz mit vielen Wortern' => array('Ein'     => '06',
+                                               'Satz'    => '8',
+                                               'mit'     => '62',
+                                               'vielen'  => '356',
+                                               'Wortern' => '37276',
+        ),
+        '中 文 空 白'                     => array('中' => '064', '文' => '06', '空' => '064', '白' => '0'),
 
     );
 

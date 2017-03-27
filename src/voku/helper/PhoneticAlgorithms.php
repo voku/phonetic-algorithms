@@ -25,7 +25,7 @@ final class PhoneticAlgorithms
       $code = self::english_phonetic_word($word);
 
       if ($code !== '') {
-        $return[] = $code;
+        $return[$word] = $code;
       }
     }
 
@@ -64,7 +64,7 @@ final class PhoneticAlgorithms
       $code = self::german_phonetic_word($word);
 
       if ($code !== '') {
-        $return[] = $code;
+        $return[$word] = $code;
       }
     }
 

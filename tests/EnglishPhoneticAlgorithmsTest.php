@@ -62,19 +62,24 @@ class englishPhoneticAlgorithmsTest extends \PHPUnit_Framework_TestCase
   public function testEnglishPhoneticSentence()
   {
     $testArray = array(
-        'Müller Lüdenscheidt'         => array('MLR', 'LTNSXTT'),
-        'Müller-Lüdenscheidt'         => array('MLRLTNSXTT'),
+        'Müller Lüdenscheidt'         => array('Müller' => 'MLR', 'Lüdenscheidt' => 'LTNSXTT'),
+        'Müller-Lüdenscheidt'         => array('Müller-Lüdenscheidt' => 'MLRLTNSXTT'),
         "\n \t"                       => array(),
-        "test \xc2\x88"               => array('TST'),
-        'Sind wir Düssel dorf'        => array('SNT', 'WR', 'TSL', 'TRF'),
-        'Sind wir Düssel dorf ?'      => array('SNT', 'WR', 'TSL', 'TRF'),
-        'Sind wir Düssel dorf?'       => array('SNT', 'WR', 'TSL', 'TRF'),
-        'Sind wir Düssel-dorf'        => array('SNT', 'WR', 'TSLTRF'),
-        'Ã ¤'                         => array('A'),
-        'test'                        => array('TST'),
-        'text'                        => array('TKST'),
-        'Ein Satz mit vielen Wortern' => array('EN', 'STS', 'MT', 'FLN', 'WRTRN'),
-        '中 文 空 白'                     => array('SHNK', 'WN', 'KNK', 'B'),
+        "test \xc2\x88"               => array('test' => 'TST'),
+        'Sind wir Düssel dorf'        => array('Sind' => 'SNT', 'wir' => 'WR', 'Düssel' => 'TSL', 'dorf' => 'TRF'),
+        'Sind wir Düssel dorf ?'      => array('Sind' => 'SNT', 'wir' => 'WR', 'Düssel' => 'TSL', 'dorf' => 'TRF'),
+        'Sind wir Düssel dorf?'       => array('Sind' => 'SNT', 'wir' => 'WR', 'Düssel' => 'TSL', 'dorf' => 'TRF'),
+        'Sind wir Düssel-dorf'        => array('Sind' => 'SNT', 'wir' => 'WR', 'Düssel-dorf' => 'TSLTRF'),
+        'Ã ¤'                         => array('Ã' => 'A'),
+        'test'                        => array('test' => 'TST'),
+        'text'                        => array('text' => 'TKST'),
+        'Ein Satz mit vielen Wortern' => array('Ein'     => 'EN',
+                                               'Satz'    => 'STS',
+                                               'mit'     => 'MT',
+                                               'vielen'  => 'FLN',
+                                               'Wortern' => 'WRTRN',
+        ),
+        '中 文 空 白'                     => array('中' => 'SHNK', '文' => 'WN', '空' => 'KNK', '白' => 'B'),
 
     );
 
