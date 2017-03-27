@@ -155,7 +155,7 @@ final class PhoneticAlgorithms
     $word = UTF8::to_ascii($word);
 
     //
-    // 4. remove every char that are noz a letter
+    // 4. remove every char that are not a letter e.g. ",", "-", "!", "#", ...
     //
 
     $word = preg_replace('/[^a-zA-Z]/', '', $word);

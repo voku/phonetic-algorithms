@@ -36,7 +36,7 @@ composer require voku/phonetic-algorithms
 
 ## Usage
 
-You the "*_phonetic_word"-method if you need a fuzzy-search for single words e.g. names.
+You the "*_phonetic_word"-method if you need a fuzzy-search for single words e.g. last-names or product-names.
 
 ```php
 use voku\helper\PhoneticAlgorithms;
