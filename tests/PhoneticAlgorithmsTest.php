@@ -22,17 +22,33 @@ class PhoneticAlgorithmsTest extends \PHPUnit_Framework_TestCase
         'Möllecken',  // '6546',
         'Mölecken',   // '6546',
     );
+
+    if (\voku\helper\Bootup::is_php('7.0')) {
+      $expected = array(
+          'Mölecken'   => 'Moelleken',
+          'Moellecken' => 'Moelleken',
+          'Möllecken'  => 'Moelleken',
+          'Moellekenn' => 'Moelleken',
+          'Moeleken'   => 'Moelleken',
+          'Möleken'    => 'Moelleken',
+          'Mölleken'   => 'Moelleken',
+          'Moelleken'  => 'Moelleken',
+      );
+    } else {
+      $expected = array(
+          'Möllecken'  => 'Moelleken',
+          'Moellekenn' => 'Moelleken',
+          'Mölleken'   => 'Moelleken',
+          'Moelleken'  => 'Moelleken',
+          'Möleken'    => 'Moelleken',
+          'Moellecken' => 'Moelleken',
+          'Moeleken'   => 'Moelleken',
+          'Mölecken'   => 'Moelleken',
+      );
+    }
+
     self::assertSame(
-        array(
-            'Mölecken'   => 'Moelleken',
-            'Moellecken' => 'Moelleken',
-            'Möllecken'  => 'Moelleken',
-            'Moellekenn' => 'Moelleken',
-            'Moeleken'   => 'Moelleken',
-            'Möleken'    => 'Moelleken',
-            'Mölleken'   => 'Moelleken',
-            'Moelleken'  => 'Moelleken',
-        ),
+        $expected,
         $phonetic->phonetic_matches('Moelleken', $tests)
     );
   }
@@ -51,22 +67,43 @@ class PhoneticAlgorithmsTest extends \PHPUnit_Framework_TestCase
         314 => 'Das erste Mal: Gardinen waschen',
         315 => 'Wäsche waschen & trocknen im Keller',
     );
+
+    if (\voku\helper\Bootup::is_php('7.0')) {
+      $expected = array(
+          315 => array(
+              'Wasche'  => 'Wäsche',
+              'troknen' => 'trocknen',
+          ),
+          621 => array(
+              'Wasche' => 'Wäsche',
+          ),
+          313 => array(
+              'Wasche' => 'Wäsche',
+          ),
+          342 => array(
+              'Wasche' => 'Wäsche',
+          ),
+      );
+    } else {
+      $expected = array(
+          315 => array(
+              'Wasche'  => 'Wäsche',
+              'troknen' => 'trocknen',
+          ),
+          313 => array(
+              'Wasche' => 'Wäsche',
+          ),
+          342 => array(
+              'Wasche' => 'Wäsche',
+          ),
+          621 => array(
+              'Wasche' => 'Wäsche',
+          ),
+      );
+    }
+
     self::assertSame(
-        array(
-            315 => array(
-                'Wasche'  => 'Wäsche',
-                'troknen' => 'trocknen',
-            ),
-            621 => array(
-                'Wasche' => 'Wäsche',
-            ),
-            313 => array(
-                'Wasche' => 'Wäsche',
-            ),
-            342 => array(
-                'Wasche' => 'Wäsche',
-            ),
-        ),
+        $expected,
         $phonetic->phonetic_matches('Wasche troknen? Wie geht das?', $tests)
     );
   }
