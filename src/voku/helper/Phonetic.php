@@ -116,7 +116,7 @@ final class Phonetic
       uasort(
           $result, function ($a, $b) {
             if ($a === $b) {
-              return 0;
+              return -1;
             }
 
             return (count($a) > count($b)) ? -1 : 1;
