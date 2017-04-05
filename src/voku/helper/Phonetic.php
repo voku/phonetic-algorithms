@@ -103,7 +103,7 @@ final class Phonetic
     foreach ($haystackResult as $haystackResultKey => $haystackResultWords) {
       foreach ($haystackResultWords as $haystackWord => $haystackCode) {
 
-        foreach ($needleResult as  $needleWord => $needleCode) {
+        foreach ($needleResult as $needleWord => $needleCode) {
           if ($haystackCode === $needleCode) {
             $result[$haystackResultKey][$needleWord] = $haystackWord;
           }
@@ -156,51 +156,23 @@ final class Phonetic
 
     if (is_array($input) === true) {
       foreach ($input as $inputKey => $inputString) {
-        $words[$inputKey] = UTF8::str_to_words($inputString);
+        $words[$inputKey] = UTF8::str_to_words($inputString, '', true, $skipShortWords);
       }
     } else {
-      $words = UTF8::str_to_words($input);
+      $words = UTF8::str_to_words($input, '', true, $skipShortWords);
     }
 
     $return = array();
     foreach ($words as $wordKey => $word) {
 
       if (is_array($word) === true) {
-
         foreach ($word as $wordInner) {
-
-          $wordInner = trim($wordInner);
-          if (!$wordInner) {
-            continue;
-          }
-
-          if (
-              $skipShortWords !== false
-              &&
-              UTF8::strlen($wordInner) <= (int)$skipShortWords
-          ) {
-            continue;
-          }
-
           $return = array_replace_recursive(
               $return,
               $this->phonetic_sentence($wordInner, $useStopWords, $skipShortWords, $key !== null ? $key : $wordKey)
           );
         }
 
-        continue;
-      }
-
-      $word = trim($word);
-      if (!$word) {
-        continue;
-      }
-
-      if (
-          $skipShortWords !== false
-          &&
-          UTF8::strlen($word) <= (int)$skipShortWords
-      ) {
         continue;
       }
 
