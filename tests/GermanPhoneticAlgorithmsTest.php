@@ -1,6 +1,7 @@
 <?php
 
-use voku\helper\PhoneticAlgorithms;
+use voku\helper\Phonetic;
+use voku\helper\PhoneticGerman;
 
 /**
  * Class GermanPhoneticAlgorithmsTest
@@ -356,7 +357,8 @@ class GermanPhoneticAlgorithmsTest extends \PHPUnit_Framework_TestCase
    */
   public function testC($word, $expected)
   {
-    self::assertEquals($expected, PhoneticAlgorithms::german_phonetic_word($word));
+    $phonetic = new PhoneticGerman();
+    self::assertEquals($expected, $phonetic->phonetic_word($word));
   }
 
   /**
@@ -367,7 +369,8 @@ class GermanPhoneticAlgorithmsTest extends \PHPUnit_Framework_TestCase
    */
   public function testChars($char, $expected)
   {
-    self::assertEquals($expected, PhoneticAlgorithms::german_phonetic_word($char));
+    $phonetic = new PhoneticGerman();
+    self::assertEquals($expected, $phonetic->phonetic_word($char));
   }
 
   /**
@@ -378,12 +381,14 @@ class GermanPhoneticAlgorithmsTest extends \PHPUnit_Framework_TestCase
    */
   public function testD($word, $expected)
   {
-    self::assertEquals($expected, PhoneticAlgorithms::german_phonetic_word($word));
+    $phonetic = new PhoneticGerman();
+    self::assertEquals($expected, $phonetic->phonetic_word($word));
   }
 
   public function testEmptyWordReturnsEmptyIndex()
   {
-    $index = PhoneticAlgorithms::german_phonetic_word('');
+    $phonetic = new PhoneticGerman();
+    $index = $phonetic->phonetic_word('');
     self::assertEquals('', $index);
   }
 
@@ -411,9 +416,10 @@ class GermanPhoneticAlgorithmsTest extends \PHPUnit_Framework_TestCase
 
     );
 
+    $phonetic = new Phonetic('de');
     for ($i = 0; $i < 2; $i++) { // keep this loop for simple performance tests
       foreach ($testArray as $before => $after) {
-        self::assertSame($after, PhoneticAlgorithms::german_phonetic_sentence($before), 'tested: ' . $before);
+        self::assertSame($after, $phonetic->phonetic_sentence($before, false, false), 'tested: ' . $before);
       }
     }
   }
@@ -503,16 +509,18 @@ class GermanPhoneticAlgorithmsTest extends \PHPUnit_Framework_TestCase
 
     );
 
+    $phonetic = new PhoneticGerman();
     for ($i = 0; $i < 2; $i++) { // keep this loop for simple performance tests
       foreach ($testArray as $before => $after) {
-        self::assertSame($after, PhoneticAlgorithms::german_phonetic_word($before), 'tested: ' . $before);
+        self::assertSame($after, $phonetic->phonetic_word($before), 'tested: ' . $before);
       }
     }
   }
 
   public function testIsEmptyString()
   {
-    self::assertSame('', PhoneticAlgorithms::german_phonetic_word(''));
+    $phonetic = new PhoneticGerman();
+    self::assertSame('', $phonetic->phonetic_word(''));
   }
 
   /**
@@ -523,7 +531,8 @@ class GermanPhoneticAlgorithmsTest extends \PHPUnit_Framework_TestCase
    */
   public function testP($word, $expected)
   {
-    self::assertEquals($expected, PhoneticAlgorithms::german_phonetic_word($word));
+    $phonetic = new PhoneticGerman();
+    self::assertEquals($expected, $phonetic->phonetic_word($word));
   }
 
   /**
@@ -534,7 +543,8 @@ class GermanPhoneticAlgorithmsTest extends \PHPUnit_Framework_TestCase
    */
   public function testSingleCharacterTransliteration($char, $expectedCode)
   {
-    $index = PhoneticAlgorithms::german_phonetic_word($char);
+    $phonetic = new PhoneticGerman();
+    $index = $phonetic->phonetic_word($char);
     self::assertEquals($expectedCode, $index);
   }
 
@@ -546,7 +556,8 @@ class GermanPhoneticAlgorithmsTest extends \PHPUnit_Framework_TestCase
    */
   public function testSpecialRulesForC($word, $expectedCode)
   {
-    $index = PhoneticAlgorithms::german_phonetic_word($word);
+    $phonetic = new PhoneticGerman();
+    $index = $phonetic->phonetic_word($word);
     self::assertEquals($expectedCode, $index);
   }
 
@@ -558,7 +569,8 @@ class GermanPhoneticAlgorithmsTest extends \PHPUnit_Framework_TestCase
    */
   public function testSpecialRulesForDT($word, $expectedCode)
   {
-    $index = PhoneticAlgorithms::german_phonetic_word($word);
+    $phonetic = new PhoneticGerman();
+    $index = $phonetic->phonetic_word($word);
     self::assertEquals($expectedCode, $index);
   }
 
@@ -570,7 +582,8 @@ class GermanPhoneticAlgorithmsTest extends \PHPUnit_Framework_TestCase
    */
   public function testSpecialRulesForP($word, $expectedCode)
   {
-    $index = PhoneticAlgorithms::german_phonetic_word($word);
+    $phonetic = new PhoneticGerman();
+    $index = $phonetic->phonetic_word($word);
     self::assertEquals($expectedCode, $index);
   }
 
@@ -582,7 +595,8 @@ class GermanPhoneticAlgorithmsTest extends \PHPUnit_Framework_TestCase
    */
   public function testSpecialRulesForX($word, $expectedCode)
   {
-    $index = PhoneticAlgorithms::german_phonetic_word($word);
+    $phonetic = new PhoneticGerman();
+    $index = $phonetic->phonetic_word($word);
     self::assertEquals($expectedCode, $index);
   }
 
@@ -594,7 +608,8 @@ class GermanPhoneticAlgorithmsTest extends \PHPUnit_Framework_TestCase
    */
   public function testT($word, $expected)
   {
-    self::assertEquals($expected, PhoneticAlgorithms::german_phonetic_word($word));
+    $phonetic = new PhoneticGerman();
+    self::assertEquals($expected, $phonetic->phonetic_word($word));
   }
 
   /**
@@ -605,7 +620,8 @@ class GermanPhoneticAlgorithmsTest extends \PHPUnit_Framework_TestCase
    */
   public function testWords($expected, $word)
   {
-    self::assertEquals($expected, PhoneticAlgorithms::german_phonetic_word($word));
+    $phonetic = new PhoneticGerman();
+    self::assertEquals($expected, $phonetic->phonetic_word($word));
   }
 
   /**
@@ -616,7 +632,8 @@ class GermanPhoneticAlgorithmsTest extends \PHPUnit_Framework_TestCase
    */
   public function testX($word, $expected)
   {
-    self::assertEquals($expected, PhoneticAlgorithms::german_phonetic_word($word));
+    $phonetic = new PhoneticGerman();
+    self::assertEquals($expected, $phonetic->phonetic_word($word));
   }
 
   /**

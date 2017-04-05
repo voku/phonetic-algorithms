@@ -1,11 +1,12 @@
 <?php
 
-use voku\helper\PhoneticAlgorithms;
+use voku\helper\Phonetic;
+use voku\helper\PhoneticEnglish;
 
 /**
- * Class englishPhoneticAlgorithmsTest
+ * Class EnglishPhoneticAlgorithmsTest
  */
-class englishPhoneticAlgorithmsTest extends \PHPUnit_Framework_TestCase
+class EnglishPhoneticAlgorithmsTest extends \PHPUnit_Framework_TestCase
 {
   /**
    * @return array
@@ -50,12 +51,14 @@ class englishPhoneticAlgorithmsTest extends \PHPUnit_Framework_TestCase
    */
   public function testChars($char, $expected)
   {
-    self::assertEquals($expected, PhoneticAlgorithms::english_phonetic_word($char));
+    $phonetic = new PhoneticEnglish();
+    self::assertEquals($expected, $phonetic->phonetic_word($char));
   }
 
   public function testEmptyWordReturnsEmptyIndex()
   {
-    $index = PhoneticAlgorithms::english_phonetic_word('');
+    $phonetic = new PhoneticEnglish();
+    $index = $phonetic->phonetic_word('');
     self::assertEquals('', $index);
   }
 
@@ -83,9 +86,11 @@ class englishPhoneticAlgorithmsTest extends \PHPUnit_Framework_TestCase
 
     );
 
+
+    $phonetic = new Phonetic('en');
     for ($i = 0; $i < 2; $i++) { // keep this loop for simple performance tests
       foreach ($testArray as $before => $after) {
-        self::assertSame($after, PhoneticAlgorithms::english_phonetic_sentence($before), 'tested: ' . $before);
+        self::assertSame($after, $phonetic->phonetic_sentence($before, false, false), 'tested: ' . $before);
       }
     }
   }
@@ -175,16 +180,18 @@ class englishPhoneticAlgorithmsTest extends \PHPUnit_Framework_TestCase
 
     );
 
+    $phonetic = new PhoneticEnglish();
     for ($i = 0; $i < 2; $i++) { // keep this loop for simple performance tests
       foreach ($testArray as $before => $after) {
-        self::assertSame($after, PhoneticAlgorithms::english_phonetic_word($before), 'tested: ' . $before);
+        self::assertSame($after, $phonetic->phonetic_word($before), 'tested: ' . $before);
       }
     }
   }
 
   public function testIsEmptyString()
   {
-    self::assertSame('', PhoneticAlgorithms::english_phonetic_word(''));
+    $phonetic = new PhoneticEnglish();
+    self::assertSame('', $phonetic->phonetic_word(''));
   }
 
   /**
@@ -195,7 +202,8 @@ class englishPhoneticAlgorithmsTest extends \PHPUnit_Framework_TestCase
    */
   public function testWords($expected, $word)
   {
-    self::assertEquals($expected, PhoneticAlgorithms::english_phonetic_word($word));
+    $phonetic = new PhoneticEnglish();
+    self::assertEquals($expected, $phonetic->phonetic_word($word));
   }
 
   /**

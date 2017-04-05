@@ -3,74 +3,12 @@
 namespace voku\helper;
 
 /**
- * PhoneticAlgorithms-Helper-Class
+ * PhoneticGerman-Helper-Class
  *
  * @package voku\helper
  */
-final class PhoneticAlgorithms
+final class PhoneticGerman implements PhoneticInterface
 {
-  /**
-   * Phonetic for the english language via "metaphone"-algorithm.
-   *
-   * @param string $sentence
-   *
-   * @return array
-   */
-  public static function english_phonetic_sentence($sentence)
-  {
-    $words = UTF8::str_to_words($sentence);
-
-    $return = array();
-    foreach ($words as $word) {
-      $code = self::english_phonetic_word($word);
-
-      if ($code !== '') {
-        $return[$word] = $code;
-      }
-    }
-
-    return $return;
-  }
-
-  /**
-   * Phonetic for the english language via "metaphone"-algorithm.
-   *
-   * "The algorithm was published in 1995 by Hans Lawrence Philips." -->
-   * - http://php.net/manual/en/function.metaphone.php
-   *
-   *
-   * @param $word
-   *
-   * @return string
-   */
-  public static function english_phonetic_word($word)
-  {
-    return metaphone(UTF8::to_ascii($word));
-  }
-
-  /**
-   * Phonetic for the german language via "Kölner Phonetik"-algorithm.
-   *
-   * @param string $sentence
-   *
-   * @return array
-   */
-  public static function german_phonetic_sentence($sentence)
-  {
-    $words = UTF8::str_to_words($sentence);
-
-    $return = array();
-    foreach ($words as $word) {
-      $code = self::german_phonetic_word($word);
-
-      if ($code !== '') {
-        $return[$word] = $code;
-      }
-    }
-
-    return $return;
-  }
-
   /**
    * Phonetic for the german language via "Kölner Phonetik"-algorithm.
    *
@@ -112,7 +50,7 @@ final class PhoneticAlgorithms
    *
    * @return string
    */
-  public static function german_phonetic_word($word)
+  public function phonetic_word($word)
   {
     // init
     $code = '';
@@ -164,11 +102,11 @@ final class PhoneticAlgorithms
     // 5. calculate the code
     //
 
-    $wordlen = strlen($word);
+    $wordLength = strlen($word);
     $char = str_split($word);
 
     if ($char[0] == 'c') {  // at the begin, exception before
-      if ($wordlen === 1) {
+      if ($wordLength === 1) {
         $code = '4';
         $x = 1;
       } else {
@@ -194,7 +132,7 @@ final class PhoneticAlgorithms
       $x = 0;
     }
 
-    for (; $x < $wordlen; $x++) {
+    for (; $x < $wordLength; $x++) {
 
       switch ($char[$x]) {
         // A, E, I, J, O, U, Y === 0
@@ -215,7 +153,7 @@ final class PhoneticAlgorithms
           break;
         case 'd':
         case 't':
-          if ($x + 1 < $wordlen) {
+          if ($x + 1 < $wordLength) {
             switch ($char[$x + 1]) {
               case 'c':
               case 's':
@@ -241,7 +179,7 @@ final class PhoneticAlgorithms
           $code .= '4';
           break;
         case 'c':
-          if ($x + 1 < $wordlen) {
+          if ($x + 1 < $wordLength) {
             switch ($char[$x + 1]) {
               case 'a':
               case 'h':
@@ -307,13 +245,13 @@ final class PhoneticAlgorithms
     //       && remove all '0'-codes, exception at the begin
     //
 
-    $codelen = strlen($code);
+    $codeLength = strlen($code);
     $num = str_split($code);
     $lastCode = '';
     $phoneticCode = '';
 
     /** @noinspection ForeachInvariantsInspection */
-    for ($x = 0; $x < $codelen; $x++) {
+    for ($x = 0; $x < $codeLength; $x++) {
       $currentCode = $num[$x];
 
       if ($lastCode === $currentCode) {

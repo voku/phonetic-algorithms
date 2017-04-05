@@ -12,14 +12,17 @@
 
 ## Description
 
-- PhoneticAlgorithms::german_phonetic_word(): 
+- "PhoneticGerman"-Class: 
 
-A good phonetic algorithms for the german language via "Kölner Phonetik": [en.wikipedia.org/wiki/Cologne_phonetics](https://en.wikipedia.org/wiki/Cologne_phonetics)
+A phonetic algorithms for the german language via "Kölner Phonetik": [en.wikipedia.org/wiki/Cologne_phonetics](https://en.wikipedia.org/wiki/Cologne_phonetics)
 
-- PhoneticAlgorithms::english_phonetic_word(): 
+- "PhoneticEnglish"-Class: 
 
-A good phonetic algorithms for the english language via "metaphone": [en.wikipedia.org/wiki/Metaphone](https://en.wikipedia.org/wiki/Metaphone)
+A phonetic algorithms for the english language via "metaphone": [en.wikipedia.org/wiki/Metaphone](https://en.wikipedia.org/wiki/Metaphone)
 
+- "PhoneticFrench"-Class:
+
+A phonetic algorithms for the french language via "SOUNDEX FR": [www.roudoudou.com/phonetic.php](http://www.roudoudou.com/phonetic.php)
 
 * [Installation](#installation)
 * [Usage](#usage)
@@ -36,10 +39,10 @@ composer require voku/phonetic-algorithms
 
 ## Usage
 
-You the "*_phonetic_word"-method if you need a fuzzy-search for single words e.g. last-names or product-names.
+You the "phonetic_word"-method if you need a fuzzy-search for single words e.g. last-names or product-names.
 
 ```php
-use voku\helper\PhoneticAlgorithms;
+use voku\helper\Phonetic;
 
 $words = array(
   'Moelleken',
@@ -50,18 +53,20 @@ $words = array(
   'Möllecken',
   'Mölecken',
 );
+$phonetic = new Phonetic('de');
 foreach ($words as $word) {
-  PhoneticAlgorithms::german_phonetic_word($string); // '6546'
+  $phonetic->phonetic_word($string); // '6546'
 }
 ```
 
-You can use the "*_phonetic_sentence"-method to process sentences.
+You can use the "phonetic_sentence"-method to process sentences.
 
 ```php
-use voku\helper\PhoneticAlgorithms;
+use voku\helper\Phonetic;
 
 $string = 'Ein Satz mit vielen Wortern';
-PhoneticAlgorithms::german_phonetic_sentence($string); 
+$phonetic = new Phonetic('de');
+$phonetic->phonetic_sentence($string, (bool) false, (false|int) false); 
 
 // [
 //   'Ein' => '06', 
@@ -69,6 +74,38 @@ PhoneticAlgorithms::german_phonetic_sentence($string);
 //   'mit' => '62', 
 //   'vielen' => '356', 
 //   'Wortern' => '37276'
+// ]
+```
+
+You can use the "phonetic_matches"-method to search for words in an array of words.
+
+```php
+use voku\helper\Phonetic;
+
+$phonetic = new Phonetic('de');
+
+$tests = array(
+    'Moelleken',  // '6546',
+    'Mölleken',   // '6546',
+    'Möleken',    // '6546',
+    'Moeleken',   // '6546',
+    'oder',       // '027',
+    'was',        // '38',
+    'Moellecken', // '6546',
+    'Möllecken',  // '6546',
+    'Mölecken',   // '6546',
+);
+
+$phonetic->phonetic_matches('Moelleken', $tests);
+    
+// [
+//   'Moelleken'  => 'Moelleken',
+//   'Mölleken'   => 'Moelleken',
+//   'Möleken'    => 'Moelleken',
+//   'Moeleken'   => 'Moelleken',
+//   'Moellecken' => 'Moelleken',
+//   'Möllecken'  => 'Moelleken',
+//   'Mölecken'   => 'Moelleken',
 // ]
 ```
 

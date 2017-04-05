@@ -1,0 +1,239 @@
+<?php
+
+namespace voku\helper;
+
+/**
+ * Phonetic-Helper-Class
+ *
+ * @package voku\helper
+ */
+final class Phonetic
+{
+  /**
+   * @var array
+   */
+  private $availableLanguages = array(
+      'de' => 'German',
+      'en' => 'English',
+      'fr' => 'French',
+  );
+
+  /**
+   * @var array
+   */
+  private $stopWords = array();
+
+  /**
+   * @var PhoneticInterface
+   */
+  private $phonetic;
+
+  /**
+   * PhoneticAlgorithms constructor.
+   *
+   * @param string $language
+   *
+   * @throws PhoneticExceptionLanguageNotExists
+   * @throws PhoneticExceptionClassNotExists
+   */
+  public function __construct($language = 'de')
+  {
+    if (array_key_exists($language, $this->availableLanguages) === false) {
+      throw new PhoneticExceptionLanguageNotExists('language not supported: ' . $language);
+    }
+
+    $className = '\\voku\\helper\\Phonetic' . $this->availableLanguages[$language];
+    if (class_exists($className) === false) {
+      throw new PhoneticExceptionClassNotExists('phonetic class not found: ' . $className);
+    }
+
+    $this->phonetic = new $className;
+
+    $this->stopWords = $this->getData($language);
+  }
+
+  /**
+   * get data from "/data/*.ser"
+   *
+   * @param string $file
+   *
+   * @return bool|string|array|int <p>Will return false on error.</p>
+   */
+  private function getData($file)
+  {
+    $file = __DIR__ . '/stopwords/' . $file . '.php';
+    if (file_exists($file)) {
+      /** @noinspection PhpIncludeInspection */
+      return require $file;
+    }
+
+    return false;
+  }
+
+  /**
+   * @param string $needle
+   * @param array  $haystack
+   *
+   * @return array
+   */
+  public function phonetic_matches($needle, array $haystack)
+  {
+    $needleResult = $this->phonetic_sentence($needle);
+    if (count($needleResult) === 0) {
+      return array();
+    }
+
+    $isAssoc = true;
+    $tmpCounter = 0;
+    foreach ($haystack as $keyTmp => $valueTmp) {
+      if ($keyTmp !== $tmpCounter) {
+        $isAssoc = false;
+        break;
+      }
+
+      $tmpCounter++;
+    }
+
+    $haystackResult = $this->phonetic_sentence($haystack);
+    if (count($haystackResult) === 0) {
+      return array();
+    }
+
+    $result = array();
+    foreach ($haystackResult as $haystackResultKey => $haystackResultWords) {
+      foreach ($haystackResultWords as $haystackWord => $haystackCode) {
+
+        foreach ($needleResult as  $needleWord => $needleCode) {
+          if ($haystackCode === $needleCode) {
+            $result[$haystackResultKey][$needleWord] = $haystackWord;
+          }
+        }
+
+      }
+    }
+
+    if (count($result) > 0) {
+      uksort(
+          $result, function ($a, $b) {
+            if ($a == $b) {
+              return 0;
+            }
+
+            return (count($a) > count($b)) ? -1 : 1;
+          }
+      );
+
+      if ($isAssoc) {
+        $resultTmp = array();
+        foreach ($result as $keyTmp => $resultInner) {
+          foreach ($resultInner as $resultInnerKey => $resultInnerValue) {
+            $resultTmp[$resultInnerValue] = $resultInnerKey;
+          }
+        }
+
+        return $resultTmp;
+      }
+    }
+
+    return $result;
+  }
+
+  /**
+   * Phonetic for more then one word.
+   *
+   * @param string|string[] $input
+   * @param bool            $useStopWords
+   * @param false|int       $skipShortWords
+   *
+   * @param int             $key
+   *
+   * @return array <p>key === orig word<br />value === code word</p>
+   */
+  public function phonetic_sentence($input, $useStopWords = true, $skipShortWords = 2, $key = null)
+  {
+    // init
+    $words = array();
+
+    if (is_array($input) === true) {
+      foreach ($input as $inputKey => $inputString) {
+        $words[$inputKey] = UTF8::str_to_words($inputString);
+      }
+    } else {
+      $words = UTF8::str_to_words($input);
+    }
+
+    $return = array();
+    foreach ($words as $wordKey => $word) {
+
+      if (is_array($word) === true) {
+
+        foreach ($word as $wordInner) {
+
+          $wordInner = trim($wordInner);
+          if (!$wordInner) {
+            continue;
+          }
+
+          if (
+              $skipShortWords !== false
+              &&
+              UTF8::strlen($wordInner) <= (int)$skipShortWords
+          ) {
+            continue;
+          }
+
+          $return = array_replace_recursive(
+              $return,
+              $this->phonetic_sentence($wordInner, $useStopWords, $skipShortWords, $key !== null ? $key : $wordKey)
+          );
+        }
+
+        continue;
+      }
+
+      $word = trim($word);
+      if (!$word) {
+        continue;
+      }
+
+      if (
+          $skipShortWords !== false
+          &&
+          UTF8::strlen($word) <= (int)$skipShortWords
+      ) {
+        continue;
+      }
+
+      if (
+          $useStopWords === true
+          &&
+          in_array($word, $this->stopWords, true)
+      ) {
+        continue;
+      }
+
+      $code = $this->phonetic->phonetic_word($word);
+      if ($code !== '') {
+        if ($key !== null) {
+          $return[$key][$word] = $code;
+        } else {
+          $return[$word] = $code;
+        }
+      }
+    }
+
+    return $return;
+  }
+
+  /**
+   * Phonetic for one word.
+   *
+   * @param string $word
+   *
+   * @return string
+   */
+  public function phonetic_word($word)
+  {
+    return $this->phonetic->phonetic_word($word);
+  }
+}
