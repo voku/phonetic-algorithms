@@ -90,10 +90,10 @@ class PhoneticAlgorithmsTest extends \PHPUnit_Framework_TestCase
               'Wasche'  => 'Wäsche',
               'troknen' => 'trocknen',
           ),
-          313 => array(
+          342 => array(
               'Wasche' => 'Wäsche',
           ),
-          342 => array(
+          313 => array(
               'Wasche' => 'Wäsche',
           ),
           621 => array(
