@@ -57,13 +57,13 @@ class PhoneticAlgorithmsTest extends \PHPUnit_Framework_TestCase
                 'Wasche'  => 'Wäsche',
                 'troknen' => 'trocknen',
             ),
+            342 => array(
+                'Wasche' => 'Wäsche',
+            ),
             621 => array(
                 'Wasche' => 'Wäsche',
             ),
             313 => array(
-                'Wasche' => 'Wäsche',
-            ),
-            342 => array(
                 'Wasche' => 'Wäsche',
             ),
         ),

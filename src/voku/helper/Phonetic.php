@@ -113,7 +113,7 @@ final class Phonetic
     }
 
     if (count($result) > 0) {
-      uksort(
+      uasort(
           $result, function ($a, $b) {
             if ($a == $b) {
               return 0;
