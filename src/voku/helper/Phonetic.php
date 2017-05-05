@@ -19,14 +19,19 @@ final class Phonetic
   );
 
   /**
-   * @var array
-   */
-  private $stopWords = array();
-
-  /**
    * @var PhoneticInterface
    */
   private $phonetic;
+
+  /**
+   * @var string
+   */
+  private $language;
+
+  /**
+   * @var StopWords
+   */
+  private $stopWords;
 
   /**
    * PhoneticAlgorithms constructor.
@@ -47,27 +52,9 @@ final class Phonetic
       throw new PhoneticExceptionClassNotExists('phonetic class not found: ' . $className);
     }
 
+    $this->language = $language;
+    $this->stopWords = new StopWords();
     $this->phonetic = new $className;
-
-    $this->stopWords = $this->getData($language);
-  }
-
-  /**
-   * get data from "/data/*.ser"
-   *
-   * @param string $file
-   *
-   * @return bool|string|array|int <p>Will return false on error.</p>
-   */
-  private function getData($file)
-  {
-    $file = __DIR__ . '/stopwords/' . $file . '.php';
-    if (file_exists($file)) {
-      /** @noinspection PhpIncludeInspection */
-      return require $file;
-    }
-
-    return false;
   }
 
   /**
@@ -153,6 +140,7 @@ final class Phonetic
   {
     // init
     $words = array();
+    static $STOP_WORDS_CACHE = array();
 
     if (is_array($input) === true) {
       foreach ($input as $inputKey => $inputString) {
@@ -160,6 +148,14 @@ final class Phonetic
       }
     } else {
       $words = UTF8::str_to_words($input, '', true, $skipShortWords);
+    }
+
+    if (
+        $useStopWords === true
+        &&
+        !isset($STOP_WORDS_CACHE[$this->language])
+    ) {
+      $STOP_WORDS_CACHE[$this->language] = $this->stopWords->getStopWordsFromLanguage($this->language);
     }
 
     $return = array();
@@ -179,7 +175,7 @@ final class Phonetic
       if (
           $useStopWords === true
           &&
-          in_array($word, $this->stopWords, true)
+          in_array($word, $STOP_WORDS_CACHE[$this->language], true)
       ) {
         continue;
       }
