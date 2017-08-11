@@ -406,13 +406,26 @@ class GermanPhoneticAlgorithmsTest extends \PHPUnit_Framework_TestCase
         'Ã ¤'                         => array('Ã' => '0'),
         'test'                        => array('test' => '282'),
         'text'                        => array('text' => '2482'),
-        'Ein Satz mit vielen Wortern' => array('Ein'     => '06',
-                                               'Satz'    => '8',
-                                               'mit'     => '62',
-                                               'vielen'  => '356',
-                                               'Wortern' => '37276',
+        'Hauptfilter Feinstaub F9 für PF 1400' => array(
+            'Hauptfilter' => '0123527',
+            'Feinstaub' => '36821',
+            'F' => '3',
+            'für' => '37',
+            'PF' => '13',
         ),
-        '中 文 空 白'                     => array('中' => '064', '文' => '06', '空' => '064', '白' => '0'),
+        'Ein Satz mit vielen Wortern' => array(
+            'Ein'     => '06',
+            'Satz'    => '8',
+            'mit'     => '62',
+            'vielen'  => '356',
+            'Wortern' => '37276',
+        ),
+        '中 文 空 白' => array(
+            '中' => '064',
+            '文' => '06',
+            '空' => '064',
+            '白' => '0',
+        ),
 
     );
 
