@@ -4,6 +4,11 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [3.0.0] - 2017-11-13
+### Changed
+- drop support for PHP < 7.0
+- use "strict_types"
+
 ## [2.1.0] - 2017-05-12
 ### Changed
 - use stop-words from "voku/stop-words"
