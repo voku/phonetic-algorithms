@@ -5,7 +5,7 @@ use voku\helper\Phonetic;
 /**
  * Class PhoneticAlgorithmsTest
  */
-class PhoneticAlgorithmsTest extends \PHPUnit_Framework_TestCase
+class PhoneticAlgorithmsTest extends \PHPUnit\Framework\TestCase
 {
   public function testPhoneticMatches()
   {

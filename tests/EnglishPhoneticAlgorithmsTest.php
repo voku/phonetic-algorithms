@@ -6,7 +6,7 @@ use voku\helper\PhoneticEnglish;
 /**
  * Class EnglishPhoneticAlgorithmsTest
  */
-class EnglishPhoneticAlgorithmsTest extends \PHPUnit_Framework_TestCase
+class EnglishPhoneticAlgorithmsTest extends \PHPUnit\Framework\TestCase
 {
   /**
    * @return array

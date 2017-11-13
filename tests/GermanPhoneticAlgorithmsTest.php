@@ -6,7 +6,7 @@ use voku\helper\PhoneticGerman;
 /**
  * Class GermanPhoneticAlgorithmsTest
  */
-class GermanPhoneticAlgorithmsTest extends \PHPUnit_Framework_TestCase
+class GermanPhoneticAlgorithmsTest extends \PHPUnit\Framework\TestCase
 {
   /**
    * @return array

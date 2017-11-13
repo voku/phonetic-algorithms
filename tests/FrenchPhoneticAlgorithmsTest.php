@@ -6,7 +6,7 @@ use voku\helper\PhoneticFrench;
 /**
  * Class FrenchPhoneticAlgorithmsTest
  */
-class FrenchPhoneticAlgorithmsTest extends \PHPUnit_Framework_TestCase
+class FrenchPhoneticAlgorithmsTest extends \PHPUnit\Framework\TestCase
 {
   /**
    * @return array

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace voku\helper;
 
 /**
@@ -141,6 +143,10 @@ final class Phonetic
     // init
     $words = array();
     static $STOP_WORDS_CACHE = array();
+
+    if ($skipShortWords === false) {
+      $skipShortWords = null;
+    }
 
     if (is_array($input) === true) {
       foreach ($input as $inputKey => $inputString) {
