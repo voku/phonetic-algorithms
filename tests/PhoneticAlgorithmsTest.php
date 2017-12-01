@@ -10,7 +10,7 @@ class PhoneticAlgorithmsTest extends \PHPUnit\Framework\TestCase
   public function testPhoneticMatches()
   {
     $phonetic = new Phonetic('de');
-    $tests = array(
+    $tests = [
         'Moelleken',  // '6546',
         'Mölleken',   // '6546',
         'Möleken',    // '6546',
@@ -21,10 +21,10 @@ class PhoneticAlgorithmsTest extends \PHPUnit\Framework\TestCase
         'Moellecken', // '6546',
         'Möllecken',  // '6546',
         'Mölecken',   // '6546',
-    );
+    ];
 
     if (\voku\helper\Bootup::is_php('7.0')) {
-      $expected = array(
+      $expected = [
           'Mölecken'   => 'Moelleken',
           'Moellecken' => 'Moelleken',
           'Möllecken'  => 'Moelleken',
@@ -33,9 +33,9 @@ class PhoneticAlgorithmsTest extends \PHPUnit\Framework\TestCase
           'Möleken'    => 'Moelleken',
           'Mölleken'   => 'Moelleken',
           'Moelleken'  => 'Moelleken',
-      );
+      ];
     } else {
-      $expected = array(
+      $expected = [
           'Möllecken'  => 'Moelleken',
           'Moellekenn' => 'Moelleken',
           'Mölleken'   => 'Moelleken',
@@ -44,7 +44,7 @@ class PhoneticAlgorithmsTest extends \PHPUnit\Framework\TestCase
           'Moellecken' => 'Moelleken',
           'Moeleken'   => 'Moelleken',
           'Mölecken'   => 'Moelleken',
-      );
+      ];
     }
 
     self::assertSame(
@@ -56,7 +56,7 @@ class PhoneticAlgorithmsTest extends \PHPUnit\Framework\TestCase
   public function testPhoneticMatchesSentence()
   {
     $phonetic = new Phonetic('de');
-    $tests = array(
+    $tests = [
         123 => 'Ostern ganz fix: Schnelle Deko-Ideen selber machen',
         342 => 'Wäsche sortieren in 4 Schritten',
         621 => 'Saubere & glatte Wäsche dank Persil!',
@@ -66,40 +66,40 @@ class PhoneticAlgorithmsTest extends \PHPUnit\Framework\TestCase
         313 => 'Das erste Mal: Wäsche färben',
         314 => 'Das erste Mal: Gardinen waschen',
         315 => 'Wäsche waschen & trocknen im Keller',
-    );
+    ];
 
     if (\voku\helper\Bootup::is_php('7.0')) {
-      $expected = array(
-          315 => array(
+      $expected = [
+          315 => [
               'Wasche'  => 'Wäsche',
               'troknen' => 'trocknen',
-          ),
-          621 => array(
+          ],
+          621 => [
               'Wasche' => 'Wäsche',
-          ),
-          313 => array(
+          ],
+          313 => [
               'Wasche' => 'Wäsche',
-          ),
-          342 => array(
+          ],
+          342 => [
               'Wasche' => 'Wäsche',
-          ),
-      );
+          ],
+      ];
     } else {
-      $expected = array(
-          315 => array(
+      $expected = [
+          315 => [
               'Wasche'  => 'Wäsche',
               'troknen' => 'trocknen',
-          ),
-          342 => array(
+          ],
+          342 => [
               'Wasche' => 'Wäsche',
-          ),
-          313 => array(
+          ],
+          313 => [
               'Wasche' => 'Wäsche',
-          ),
-          621 => array(
+          ],
+          621 => [
               'Wasche' => 'Wäsche',
-          ),
-      );
+          ],
+      ];
     }
 
     self::assertSame(
@@ -112,30 +112,30 @@ class PhoneticAlgorithmsTest extends \PHPUnit\Framework\TestCase
   {
     $phonetic = new Phonetic('de');
     self::assertSame(
-        array('Moelleken' => '6546'),
+        ['Moelleken' => '6546'],
         $phonetic->phonetic_sentence('Moelleken oder was?')
     );
 
     self::assertSame(
-        array(
+        [
             'Moelleken' => '6546',
             'oder'      => '027',
             'was'       => '38',
-        ),
+        ],
         $phonetic->phonetic_sentence('Moelleken oder was?', false)
     );
 
     self::assertSame(
-        array(
+        [
             'Moelleken' => '6546',
-        ),
+        ],
         $phonetic->phonetic_sentence('Moelleken oder was?', true)
     );
 
     self::assertSame(
-        array(
+        [
             'Moelleken' => '6546',
-        ),
+        ],
         $phonetic->phonetic_sentence('Moelleken oder was?', false, 4)
     );
   }

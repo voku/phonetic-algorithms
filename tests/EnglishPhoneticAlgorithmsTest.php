@@ -11,36 +11,36 @@ class EnglishPhoneticAlgorithmsTest extends \PHPUnit\Framework\TestCase
   /**
    * @return array
    */
-  public function charProvider()
+  public function charProvider(): array
   {
-    return array(
-        array('A', 'A'),
-        array('B', 'B'),
-        array('C', 'K'),
-        array('D', 'T'),
-        array('E', 'E'),
-        array('F', 'F'),
-        array('G', 'K'),
-        array('H', ''),
-        array('I', 'I'),
-        array('J', 'J'),
-        array('K', 'K'),
-        array('L', 'L'),
-        array('M', 'M'),
-        array('N', 'N'),
-        array('O', 'O'),
-        array('P', 'P'),
-        array('Q', 'K'),
-        array('R', 'R'),
-        array('S', 'S'),
-        array('T', 'T'),
-        array('U', 'U'),
-        array('V', 'F'),
-        array('W', ''),
-        array('X', 'S'),
-        array('Y', ''),
-        array('Z', 'S'),
-    );
+    return [
+        ['A', 'A'],
+        ['B', 'B'],
+        ['C', 'K'],
+        ['D', 'T'],
+        ['E', 'E'],
+        ['F', 'F'],
+        ['G', 'K'],
+        ['H', ''],
+        ['I', 'I'],
+        ['J', 'J'],
+        ['K', 'K'],
+        ['L', 'L'],
+        ['M', 'M'],
+        ['N', 'N'],
+        ['O', 'O'],
+        ['P', 'P'],
+        ['Q', 'K'],
+        ['R', 'R'],
+        ['S', 'S'],
+        ['T', 'T'],
+        ['U', 'U'],
+        ['V', 'F'],
+        ['W', ''],
+        ['X', 'S'],
+        ['Y', ''],
+        ['Z', 'S'],
+    ];
   }
 
   /**
@@ -64,27 +64,28 @@ class EnglishPhoneticAlgorithmsTest extends \PHPUnit\Framework\TestCase
 
   public function testEnglishPhoneticSentence()
   {
-    $testArray = array(
-        'Müller Lüdenscheidt'         => array('Müller' => 'MLR', 'Lüdenscheidt' => 'LTNSXTT'),
-        'Müller-Lüdenscheidt'         => array('Müller-Lüdenscheidt' => 'MLRLTNSXTT'),
-        "\n \t"                       => array(),
-        "test \xc2\x88"               => array('test' => 'TST'),
-        'Sind wir Düssel dorf'        => array('Sind' => 'SNT', 'wir' => 'WR', 'Düssel' => 'TSL', 'dorf' => 'TRF'),
-        'Sind wir Düssel dorf ?'      => array('Sind' => 'SNT', 'wir' => 'WR', 'Düssel' => 'TSL', 'dorf' => 'TRF'),
-        'Sind wir Düssel dorf?'       => array('Sind' => 'SNT', 'wir' => 'WR', 'Düssel' => 'TSL', 'dorf' => 'TRF'),
-        'Sind wir Düssel-dorf'        => array('Sind' => 'SNT', 'wir' => 'WR', 'Düssel-dorf' => 'TSLTRF'),
-        'Ã ¤'                         => array('Ã' => 'A'),
-        'test'                        => array('test' => 'TST'),
-        'text'                        => array('text' => 'TKST'),
-        'Ein Satz mit vielen Wortern' => array('Ein'     => 'EN',
-                                               'Satz'    => 'STS',
-                                               'mit'     => 'MT',
-                                               'vielen'  => 'FLN',
-                                               'Wortern' => 'WRTRN',
-        ),
-        '中 文 空 白'                     => array('中' => 'SHNK', '文' => 'WN', '空' => 'KNK', '白' => 'B'),
+    $testArray = [
+        'Müller Lüdenscheidt'         => ['Müller' => 'MLR', 'Lüdenscheidt' => 'LTNSXTT'],
+        'Müller-Lüdenscheidt'         => ['Müller-Lüdenscheidt' => 'MLRLTNSXTT'],
+        "\n \t"                       => [],
+        "test \xc2\x88"               => ['test' => 'TST'],
+        'Sind wir Düssel dorf'        => ['Sind' => 'SNT', 'wir' => 'WR', 'Düssel' => 'TSL', 'dorf' => 'TRF'],
+        'Sind wir Düssel dorf ?'      => ['Sind' => 'SNT', 'wir' => 'WR', 'Düssel' => 'TSL', 'dorf' => 'TRF'],
+        'Sind wir Düssel dorf?'       => ['Sind' => 'SNT', 'wir' => 'WR', 'Düssel' => 'TSL', 'dorf' => 'TRF'],
+        'Sind wir Düssel-dorf'        => ['Sind' => 'SNT', 'wir' => 'WR', 'Düssel-dorf' => 'TSLTRF'],
+        'Ã ¤'                         => ['Ã' => 'A'],
+        'test'                        => ['test' => 'TST'],
+        'text'                        => ['text' => 'TKST'],
+        'Ein Satz mit vielen Wortern' => [
+            'Ein'     => 'EN',
+            'Satz'    => 'STS',
+            'mit'     => 'MT',
+            'vielen'  => 'FLN',
+            'Wortern' => 'WRTRN',
+        ],
+        '中 文 空 白'                     => ['中' => 'SHNK', '文' => 'WN', '空' => 'KNK', '白' => 'B'],
 
-    );
+    ];
 
 
     $phonetic = new Phonetic('en');
@@ -97,7 +98,7 @@ class EnglishPhoneticAlgorithmsTest extends \PHPUnit\Framework\TestCase
 
   public function testEnglishPhoneticWord()
   {
-    $testArray = array(
+    $testArray = [
         'Breschnew'           => 'BRSXN',
         'Müller Lüdenscheidt' => 'MLRLTNSXTT',
         'Müller-Lüdenscheidt' => 'MLRLTNSXTT',
@@ -178,7 +179,7 @@ class EnglishPhoneticAlgorithmsTest extends \PHPUnit\Framework\TestCase
         'Lübyien'             => 'LBYN',
         'Lybien'              => 'LBN',
 
-    );
+    ];
 
     $phonetic = new PhoneticEnglish();
     for ($i = 0; $i < 2; $i++) { // keep this loop for simple performance tests
@@ -209,14 +210,14 @@ class EnglishPhoneticAlgorithmsTest extends \PHPUnit\Framework\TestCase
   /**
    * @return array
    */
-  public function wordsProvider()
+  public function wordsProvider(): array
   {
-    return array(
-        array('HLJR', 'Holger'),
-        array('WLTRSTRF', 'Woltersdorf'),
-        array('BRSXN', 'Breschnew'),
-        array('MLRLTNSXTT', 'Müller-Lüdenscheidt'),
-        array('WKPT', 'Wikipedia'),
-    );
+    return [
+        ['HLJR', 'Holger'],
+        ['WLTRSTRF', 'Woltersdorf'],
+        ['BRSXN', 'Breschnew'],
+        ['MLRLTNSXTT', 'Müller-Lüdenscheidt'],
+        ['WKPT', 'Wikipedia'],
+    ];
   }
 }

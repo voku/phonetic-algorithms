@@ -11,342 +11,342 @@ class GermanPhoneticAlgorithmsTest extends \PHPUnit\Framework\TestCase
   /**
    * @return array
    */
-  public function cProvider()
+  public function cProvider(): array
   {
-    return array(
-        array('CA', '4'),
-        array('CC', '8'),
-        array('CL', '45'),
-        array('CR', '47'),
-        array('CX', '48'),
-        array('CB', '81'),
-        array('CD', '82'),
-        array('CF', '83'),
-        array('CG', '84'),
-        array('CM', '86'),
-        array('PCA', '14'),
-        array('PCC', '18'),
-        array('PCX', '148'),
-        array('PCP', '181'),
-        array('PCD', '182'),
-        array('PCF', '183'),
-        array('PCG', '184'),
-        array('PCL', '185'),
-        array('PCM', '186'),
-        array('PCR', '187'),
-    );
+    return [
+        ['CA', '4'],
+        ['CC', '8'],
+        ['CL', '45'],
+        ['CR', '47'],
+        ['CX', '48'],
+        ['CB', '81'],
+        ['CD', '82'],
+        ['CF', '83'],
+        ['CG', '84'],
+        ['CM', '86'],
+        ['PCA', '14'],
+        ['PCC', '18'],
+        ['PCX', '148'],
+        ['PCP', '181'],
+        ['PCD', '182'],
+        ['PCF', '183'],
+        ['PCG', '184'],
+        ['PCL', '185'],
+        ['PCM', '186'],
+        ['PCR', '187'],
+    ];
   }
 
   /**
    * @return array
    */
-  public function cRuleProvider()
+  public function cRuleProvider(): array
   {
-    return array(
+    return [
       # C as initial sound before A, H, K, L, O, Q, R, U, X = '4'
-      array('CA', '4'),
-      array('CH', '4'),
-      array('CK', '4'),
-      array('CL', '45'),
-      array('CO', '4'),
-      array('CQ', '4'),
-      array('CR', '47'),
-      array('CU', '4'),
-      array('CX', '48'),
+      ['CA', '4'],
+      ['CH', '4'],
+      ['CK', '4'],
+      ['CL', '45'],
+      ['CO', '4'],
+      ['CQ', '4'],
+      ['CR', '47'],
+      ['CU', '4'],
+      ['CX', '48'],
       # Ca as initial sound NOT before A, H, K, L, O, Q, R, U, X = '8'
-      array('CB', '81'),
-      array('CC', '8'),
-      array('CD', '82'),
-      array('CE', '8'),
-      array('CF', '83'),
-      array('CG', '84'),
-      array('CI', '8'),
-      array('CJ', '8'),
-      array('CM', '86'),
-      array('CN', '86'),
-      array('CP', '81'),
-      array('CS', '8'),
-      array('CT', '82'),
-      array('CV', '83'),
-      array('CW', '83'),
-      array('CY', '8'),
-      array('CZ', '8'),
+      ['CB', '81'],
+      ['CC', '8'],
+      ['CD', '82'],
+      ['CE', '8'],
+      ['CF', '83'],
+      ['CG', '84'],
+      ['CI', '8'],
+      ['CJ', '8'],
+      ['CM', '86'],
+      ['CN', '86'],
+      ['CP', '81'],
+      ['CS', '8'],
+      ['CT', '82'],
+      ['CV', '83'],
+      ['CW', '83'],
+      ['CY', '8'],
+      ['CZ', '8'],
       # C after S, Z = '8'
-      array('SC', '8'),
-      array('ZC', '8'),
-      array('SCX', '8'),
-      array('ZCX', '8'),
+      ['SC', '8'],
+      ['ZC', '8'],
+      ['SCX', '8'],
+      ['ZCX', '8'],
       # C before A, H, K, O, Q, U, X but NOT after S, Z = '4'
-      array('BCA', '14'),
-      array('BCH', '14'),
-      array('BCK', '14'),
-      array('BCO', '14'),
-      array('BCQ', '14'),
-      array('BCU', '14'),
-      array('BCX', '148'),
+      ['BCA', '14'],
+      ['BCH', '14'],
+      ['BCK', '14'],
+      ['BCO', '14'],
+      ['BCQ', '14'],
+      ['BCU', '14'],
+      ['BCX', '148'],
       # C not before A, H, K, O, Q, U, X = '8'
-      array('BCB', '181'),
-      array('BCC', '18'),
-      array('BCD', '182'),
-      array('BCE', '18'),
-      array('BCF', '183'),
-      array('BCG', '184'),
-      array('BCI', '18'),
-      array('BCJ', '18'),
-      array('BCL', '185'),
-      array('BCM', '186'),
-      array('BCN', '186'),
-      array('BCP', '181'),
-      array('BCR', '187'),
-      array('BCS', '18'),
-      array('BCT', '182'),
-      array('BCV', '183'),
-      array('BCW', '183'),
-      array('BCY', '18'),
-      array('BCZ', '18'),
-    );
+      ['BCB', '181'],
+      ['BCC', '18'],
+      ['BCD', '182'],
+      ['BCE', '18'],
+      ['BCF', '183'],
+      ['BCG', '184'],
+      ['BCI', '18'],
+      ['BCJ', '18'],
+      ['BCL', '185'],
+      ['BCM', '186'],
+      ['BCN', '186'],
+      ['BCP', '181'],
+      ['BCR', '187'],
+      ['BCS', '18'],
+      ['BCT', '182'],
+      ['BCV', '183'],
+      ['BCW', '183'],
+      ['BCY', '18'],
+      ['BCZ', '18'],
+    ];
   }
 
   /**
    * @return array
    */
-  public function charProvider()
+  public function charProvider(): array
   {
-    return array(
-        array('A', '0'),
-        array('B', '1'),
-        array('C', '4'),
-        array('D', '2'),
-        array('E', '0'),
-        array('F', '3'),
-        array('G', '4'),
-        array('H', ''),
-        array('I', '0'),
-        array('J', '0'),
-        array('K', '4'),
-        array('L', '5'),
-        array('M', '6'),
-        array('N', '6'),
-        array('O', '0'),
-        array('P', '1'),
-        array('Q', '4'),
-        array('R', '7'),
-        array('S', '8'),
-        array('T', '2'),
-        array('U', '0'),
-        array('V', '3'),
-        array('W', '3'),
-        array('X', '48'),
-        array('Y', '0'),
-        array('Z', '8'),
-    );
+    return [
+        ['A', '0'],
+        ['B', '1'],
+        ['C', '4'],
+        ['D', '2'],
+        ['E', '0'],
+        ['F', '3'],
+        ['G', '4'],
+        ['H', ''],
+        ['I', '0'],
+        ['J', '0'],
+        ['K', '4'],
+        ['L', '5'],
+        ['M', '6'],
+        ['N', '6'],
+        ['O', '0'],
+        ['P', '1'],
+        ['Q', '4'],
+        ['R', '7'],
+        ['S', '8'],
+        ['T', '2'],
+        ['U', '0'],
+        ['V', '3'],
+        ['W', '3'],
+        ['X', '48'],
+        ['Y', '0'],
+        ['Z', '8'],
+    ];
   }
 
   /**
    * @return array
    */
-  public function dProvider()
+  public function dProvider(): array
   {
-    return array(
-        array('DA', '2'),
-        array('DC', '8'),
-        array('DB', '21'),
-        array('DF', '23'),
-        array('DG', '24'),
-        array('DL', '25'),
-        array('DM', '26'),
-        array('DR', '27'),
-        array('DX', '248'),
-    );
+    return [
+        ['DA', '2'],
+        ['DC', '8'],
+        ['DB', '21'],
+        ['DF', '23'],
+        ['DG', '24'],
+        ['DL', '25'],
+        ['DM', '26'],
+        ['DR', '27'],
+        ['DX', '248'],
+    ];
   }
 
   /**
    * @return array
    */
-  public function dtRuleProvider()
+  public function dtRuleProvider(): array
   {
-    return array(
+    return [
       # D not before C, S, Z = '2'
-      array('DA', '2'),
-      array('DB', '21'),
-      array('DD', '2'),
-      array('DE', '2'),
-      array('DF', '23'),
-      array('DF', '23'),
-      array('DG', '24'),
-      array('DH', '2'),
-      array('DI', '2'),
-      array('DJ', '2'),
-      array('DK', '24'),
-      array('DL', '25'),
-      array('DM', '26'),
-      array('DN', '26'),
-      array('DO', '2'),
-      array('DP', '21'),
-      array('DQ', '24'),
-      array('DR', '27'),
-      array('DT', '2'),
-      array('DU', '2'),
-      array('DV', '23'),
-      array('DW', '23'),
-      array('DX', '248'),
-      array('DY', '2'),
+      ['DA', '2'],
+      ['DB', '21'],
+      ['DD', '2'],
+      ['DE', '2'],
+      ['DF', '23'],
+      ['DF', '23'],
+      ['DG', '24'],
+      ['DH', '2'],
+      ['DI', '2'],
+      ['DJ', '2'],
+      ['DK', '24'],
+      ['DL', '25'],
+      ['DM', '26'],
+      ['DN', '26'],
+      ['DO', '2'],
+      ['DP', '21'],
+      ['DQ', '24'],
+      ['DR', '27'],
+      ['DT', '2'],
+      ['DU', '2'],
+      ['DV', '23'],
+      ['DW', '23'],
+      ['DX', '248'],
+      ['DY', '2'],
       # T not before C, S, Z = '2'
-      array('TA', '2'),
-      array('TB', '21'),
-      array('TD', '2'),
-      array('TE', '2'),
-      array('TF', '23'),
-      array('TF', '23'),
-      array('TG', '24'),
-      array('TH', '2'),
-      array('TI', '2'),
-      array('TJ', '2'),
-      array('TK', '24'),
-      array('TL', '25'),
-      array('TM', '26'),
-      array('TN', '26'),
-      array('TO', '2'),
-      array('TP', '21'),
-      array('TQ', '24'),
-      array('TR', '27'),
-      array('TT', '2'),
-      array('TU', '2'),
-      array('TV', '23'),
-      array('TW', '23'),
-      array('TX', '248'),
-      array('TY', '2'),
+      ['TA', '2'],
+      ['TB', '21'],
+      ['TD', '2'],
+      ['TE', '2'],
+      ['TF', '23'],
+      ['TF', '23'],
+      ['TG', '24'],
+      ['TH', '2'],
+      ['TI', '2'],
+      ['TJ', '2'],
+      ['TK', '24'],
+      ['TL', '25'],
+      ['TM', '26'],
+      ['TN', '26'],
+      ['TO', '2'],
+      ['TP', '21'],
+      ['TQ', '24'],
+      ['TR', '27'],
+      ['TT', '2'],
+      ['TU', '2'],
+      ['TV', '23'],
+      ['TW', '23'],
+      ['TX', '248'],
+      ['TY', '2'],
       # D before C, S, Z = '8'
-      array('DC', '8'),
-      array('DS', '8'),
-      array('DZ', '8'),
+      ['DC', '8'],
+      ['DS', '8'],
+      ['DZ', '8'],
       # T before C, S, Z = '8'
-      array('TC', '8'),
-      array('TS', '8'),
-      array('TZ', '8'),
-    );
+      ['TC', '8'],
+      ['TS', '8'],
+      ['TZ', '8'],
+    ];
   }
 
   /**
    * @return array
    */
-  public function pProvider()
+  public function pProvider(): array
   {
-    return array(
-        array('PA', '1'),
-        array('PH', '3'),
-        array('PD', '12'),
-        array('PF', '13'),
-        array('PG', '14'),
-        array('PL', '15'),
-        array('PM', '16'),
-        array('PR', '17'),
-        array('PC', '18'),
-        array('PX', '148'),
-    );
+    return [
+        ['PA', '1'],
+        ['PH', '3'],
+        ['PD', '12'],
+        ['PF', '13'],
+        ['PG', '14'],
+        ['PL', '15'],
+        ['PM', '16'],
+        ['PR', '17'],
+        ['PC', '18'],
+        ['PX', '148'],
+    ];
   }
 
   /**
    * @return array
    */
-  public function pRuleProvider()
+  public function pRuleProvider(): array
   {
-    return array(
+    return [
       # P not before H = '1'
-      array('PA', '1'),
-      array('PB', '1'),
-      array('PC', '18'),
-      array('PD', '12'),
-      array('PE', '1'),
-      array('PF', '13'),
-      array('PG', '14'),
-      array('PG', '14'),
-      array('PI', '1'),
-      array('PJ', '1'),
-      array('PK', '14'),
-      array('PL', '15'),
-      array('PM', '16'),
-      array('PN', '16'),
-      array('PO', '1'),
-      array('PP', '1'),
-      array('PQ', '14'),
-      array('PR', '17'),
-      array('PS', '18'),
-      array('PT', '12'),
-      array('PU', '1'),
-      array('PV', '13'),
-      array('PW', '13'),
-      array('PX', '148'),
-      array('PY', '1'),
-      array('PZ', '18'),
+      ['PA', '1'],
+      ['PB', '1'],
+      ['PC', '18'],
+      ['PD', '12'],
+      ['PE', '1'],
+      ['PF', '13'],
+      ['PG', '14'],
+      ['PG', '14'],
+      ['PI', '1'],
+      ['PJ', '1'],
+      ['PK', '14'],
+      ['PL', '15'],
+      ['PM', '16'],
+      ['PN', '16'],
+      ['PO', '1'],
+      ['PP', '1'],
+      ['PQ', '14'],
+      ['PR', '17'],
+      ['PS', '18'],
+      ['PT', '12'],
+      ['PU', '1'],
+      ['PV', '13'],
+      ['PW', '13'],
+      ['PX', '148'],
+      ['PY', '1'],
+      ['PZ', '18'],
       # P before H = '3'
-      array('PH', '3'),
-    );
+      ['PH', '3'],
+    ];
   }
 
   /**
    * @return array
    */
-  public function singleCharacterProvider()
+  public function singleCharacterProvider(): array
   {
-    return array(
+    return [
       # A, E, I, J, O, U, Y = '0'
-      array('A', '0'),
-      array('E', '0'),
-      array('I', '0'),
-      array('J', '0'),
-      array('O', '0'),
-      array('U', '0'),
-      array('Y', '0'),
+      ['A', '0'],
+      ['E', '0'],
+      ['I', '0'],
+      ['J', '0'],
+      ['O', '0'],
+      ['U', '0'],
+      ['Y', '0'],
       # H = ''
-      array('H', ''),
+      ['H', ''],
       # B, P = '1'
-      array('B', '1'),
-      array('P', '1'),
+      ['B', '1'],
+      ['P', '1'],
       # D, T = '2'
-      array('D', '2'),
-      array('T', '2'),
+      ['D', '2'],
+      ['T', '2'],
       # F, V, W = '3'
-      array('F', '3'),
-      array('V', '3'),
-      array('W', '3'),
+      ['F', '3'],
+      ['V', '3'],
+      ['W', '3'],
       # G, K, Q = '4'
-      array('G', '4'),
-      array('K', '4'),
-      array('Q', '4'),
+      ['G', '4'],
+      ['K', '4'],
+      ['Q', '4'],
       # C = '4'
-      array('C', '4'),
+      ['C', '4'],
       # X = '48'
-      array('X', '48'),
+      ['X', '48'],
       # L = '5',
-      array('L', '5'),
+      ['L', '5'],
       # M, N
-      array('M', '6'),
-      array('N', '6'),
+      ['M', '6'],
+      ['N', '6'],
       # R = '7'
-      array('R', '7'),
+      ['R', '7'],
       # S, Z = '8'
-      array('S', '8'),
-      array('Z', '8'),
-    );
+      ['S', '8'],
+      ['Z', '8'],
+    ];
   }
 
   /**
    * @return array
    */
-  public function tProvider()
+  public function tProvider(): array
   {
-    return array(
-        array('TA', '2'),
-        array('TC', '8'),
-        array('TB', '21'),
-        array('TF', '23'),
-        array('TG', '24'),
-        array('TL', '25'),
-        array('TM', '26'),
-        array('TR', '27'),
-        array('TX', '248'),
-    );
+    return [
+        ['TA', '2'],
+        ['TC', '8'],
+        ['TB', '21'],
+        ['TF', '23'],
+        ['TG', '24'],
+        ['TL', '25'],
+        ['TM', '26'],
+        ['TR', '27'],
+        ['TX', '248'],
+    ];
   }
 
   /**
@@ -394,40 +394,40 @@ class GermanPhoneticAlgorithmsTest extends \PHPUnit\Framework\TestCase
 
   public function testGermanPhoneticSentence()
   {
-    $testArray = array(
-        'Müller Lüdenscheidt'         => array('Müller' => '657', 'Lüdenscheidt' => '52682'),
-        'Müller-Lüdenscheidt'         => array('Müller-Lüdenscheidt' => '65752682'),
-        "\n \t"                       => array(),
-        "test \xc2\x88"               => array('test' => '282'),
-        'Sind wir Düssel dorf'        => array('Sind' => '862', 'wir' => '37', 'Düssel' => '285', 'dorf' => '273'),
-        'Sind wir Düssel dorf ?'      => array('Sind' => '862', 'wir' => '37', 'Düssel' => '285', 'dorf' => '273'),
-        'Sind wir Düssel dorf?'       => array('Sind' => '862', 'wir' => '37', 'Düssel' => '285', 'dorf' => '273'),
-        'Sind wir Düssel-dorf'        => array('Sind' => '862', 'wir' => '37', 'Düssel-dorf' => '285273'),
-        'Ã ¤'                         => array('Ã' => '0'),
-        'test'                        => array('test' => '282'),
-        'text'                        => array('text' => '2482'),
-        'Hauptfilter Feinstaub F9 für PF 1400' => array(
+    $testArray = [
+        'Müller Lüdenscheidt'                  => ['Müller' => '657', 'Lüdenscheidt' => '52682'],
+        'Müller-Lüdenscheidt'                  => ['Müller-Lüdenscheidt' => '65752682'],
+        "\n \t"                                => [],
+        "test \xc2\x88"                        => ['test' => '282'],
+        'Sind wir Düssel dorf'                 => ['Sind' => '862', 'wir' => '37', 'Düssel' => '285', 'dorf' => '273'],
+        'Sind wir Düssel dorf ?'               => ['Sind' => '862', 'wir' => '37', 'Düssel' => '285', 'dorf' => '273'],
+        'Sind wir Düssel dorf?'                => ['Sind' => '862', 'wir' => '37', 'Düssel' => '285', 'dorf' => '273'],
+        'Sind wir Düssel-dorf'                 => ['Sind' => '862', 'wir' => '37', 'Düssel-dorf' => '285273'],
+        'Ã ¤'                                  => ['Ã' => '0'],
+        'test'                                 => ['test' => '282'],
+        'text'                                 => ['text' => '2482'],
+        'Hauptfilter Feinstaub F9 für PF 1400' => [
             'Hauptfilter' => '0123527',
-            'Feinstaub' => '36821',
-            'F' => '3',
-            'für' => '37',
-            'PF' => '13',
-        ),
-        'Ein Satz mit vielen Wortern' => array(
+            'Feinstaub'   => '36821',
+            'F'           => '3',
+            'für'         => '37',
+            'PF'          => '13',
+        ],
+        'Ein Satz mit vielen Wortern'          => [
             'Ein'     => '06',
             'Satz'    => '8',
             'mit'     => '62',
             'vielen'  => '356',
             'Wortern' => '37276',
-        ),
-        '中 文 空 白' => array(
+        ],
+        '中 文 空 白'                              => [
             '中' => '064',
             '文' => '06',
             '空' => '064',
             '白' => '0',
-        ),
+        ],
 
-    );
+    ];
 
     $phonetic = new Phonetic('de');
     for ($i = 0; $i < 2; $i++) { // keep this loop for simple performance tests
@@ -439,7 +439,7 @@ class GermanPhoneticAlgorithmsTest extends \PHPUnit\Framework\TestCase
 
   public function testGermanPhoneticWord()
   {
-    $testArray = array(
+    $testArray = [
         'Breschnew'           => '17863',
         'Müller Lüdenscheidt' => '65752682',
         'Müller-Lüdenscheidt' => '65752682',
@@ -523,7 +523,7 @@ class GermanPhoneticAlgorithmsTest extends \PHPUnit\Framework\TestCase
         'Lübyien'             => '516',
         'Lybien'              => '516',
 
-    );
+    ];
 
     $phonetic = new PhoneticGerman();
     for ($i = 0; $i < 2; $i++) { // keep this loop for simple performance tests
@@ -655,70 +655,70 @@ class GermanPhoneticAlgorithmsTest extends \PHPUnit\Framework\TestCase
   /**
    * @return array
    */
-  public function wordsProvider()
+  public function wordsProvider(): array
   {
-    return array(
-        array('547', 'Holger'),
-        array('35278273', 'Woltersdorf'),
-        array('17863', 'Breschnew'),
-        array('65752682', 'Müller-Lüdenscheidt'),
-        array('3412', 'Wikipedia'),
-    );
+    return [
+        ['547', 'Holger'],
+        ['35278273', 'Woltersdorf'],
+        ['17863', 'Breschnew'],
+        ['65752682', 'Müller-Lüdenscheidt'],
+        ['3412', 'Wikipedia'],
+    ];
   }
 
   /**
    * @return array
    */
-  public function xProvider()
+  public function xProvider(): array
   {
-    return array(
-        array('AX', '48'),
-        array('IX', '048'),
-        array('BX', '148'),
-        array('DX', '248'),
-        array('FX', '348'),
-        array('LX', '548'),
-        array('MX', '648'),
-        array('RX', '748'),
-        array('SX', '848'),
-        array('XX', '4848'),
-    );
+    return [
+        ['AX', '48'],
+        ['IX', '048'],
+        ['BX', '148'],
+        ['DX', '248'],
+        ['FX', '348'],
+        ['LX', '548'],
+        ['MX', '648'],
+        ['RX', '748'],
+        ['SX', '848'],
+        ['XX', '4848'],
+    ];
   }
 
   /**
    * @return array
    */
-  public function xRuleProvider()
+  public function xRuleProvider(): array
   {
-    return array(
+    return [
       # X not after C, K, Q = '48'
-      array('AX', '48'),
-      array('BX', '148'),
-      array('DX', '248'),
-      array('EX', '48'),
-      array('FX', '348'),
-      array('GX', '48'),
-      array('HX', '48'),
-      array('IX', '048'),
-      array('JX', '048'),
-      array('LX', '548'),
-      array('MX', '648'),
-      array('NX', '648'),
-      array('OX', '048'),
-      array('PX', '148'),
-      array('RX', '748'),
-      array('SX', '848'),
-      array('TX', '248'),
-      array('UX', '048'),
-      array('VX', '348'),
-      array('WX', '348'),
-      array('XX', '4848'),
-      array('YX', '048'),
-      array('ZX', '848'),
+      ['AX', '48'],
+      ['BX', '148'],
+      ['DX', '248'],
+      ['EX', '48'],
+      ['FX', '348'],
+      ['GX', '48'],
+      ['HX', '48'],
+      ['IX', '048'],
+      ['JX', '048'],
+      ['LX', '548'],
+      ['MX', '648'],
+      ['NX', '648'],
+      ['OX', '048'],
+      ['PX', '148'],
+      ['RX', '748'],
+      ['SX', '848'],
+      ['TX', '248'],
+      ['UX', '048'],
+      ['VX', '348'],
+      ['WX', '348'],
+      ['XX', '4848'],
+      ['YX', '048'],
+      ['ZX', '848'],
       # X after C, K, Q = '8'
-      array('CX', '48'),
-      array('KX', '48'),
-      array('QX', '48'),
-    );
+      ['CX', '48'],
+      ['KX', '48'],
+      ['QX', '48'],
+    ];
   }
 }

@@ -22,8 +22,8 @@ final class PhoneticEnglish implements PhoneticInterface
    *
    * @return string
    */
-  public function phonetic_word($word)
+  public function phonetic_word($word): string
   {
-    return metaphone(UTF8::to_ascii($word));
+    return \metaphone(UTF8::to_ascii($word));
   }
 }

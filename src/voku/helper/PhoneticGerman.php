@@ -52,7 +52,7 @@ final class PhoneticGerman implements PhoneticInterface
    *
    * @return string
    */
-  public function phonetic_word($word)
+  public function phonetic_word($word): string
   {
     // init
     $code = '';
@@ -72,20 +72,20 @@ final class PhoneticGerman implements PhoneticInterface
     // 2. substitute some chars
     //
 
-    $substitutionSearch = array(
+    $substitutionSearch = [
         'ä',
         'ö',
         'ü',
         'ß',
         'ph',
-    );
-    $substitutionReplace = array(
+    ];
+    $substitutionReplace = [
         'a',
         'o',
         'u',
         'ss',
         'f',
-    );
+    ];
     $word = str_replace($substitutionSearch, $substitutionReplace, $word);
 
     //
@@ -98,14 +98,14 @@ final class PhoneticGerman implements PhoneticInterface
     // 4. remove every char that are not a letter e.g. ",", "-", "!", "#", ...
     //
 
-    $word = preg_replace('/[^a-zA-Z]/', '', $word);
+    $word = (string)\preg_replace('/[^a-zA-Z]/', '', $word);
 
     //
     // 5. calculate the code
     //
 
-    $wordLength = strlen($word);
-    $char = str_split($word);
+    $wordLength = \strlen($word);
+    $char = \str_split($word);
 
     if ($char[0] == 'c') {  // at the begin, exception before
       if ($wordLength === 1) {
@@ -247,8 +247,8 @@ final class PhoneticGerman implements PhoneticInterface
     //       && remove all '0'-codes, exception at the begin
     //
 
-    $codeLength = strlen($code);
-    $num = str_split($code);
+    $codeLength = \strlen($code);
+    $num = \str_split($code);
     $lastCode = '';
     $phoneticCode = '';
 

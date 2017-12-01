@@ -11,36 +11,36 @@ class FrenchPhoneticAlgorithmsTest extends \PHPUnit\Framework\TestCase
   /**
    * @return array
    */
-  public function charProvider()
+  public function charProvider(): array
   {
-    return array(
-        array('A', 'A'),
-        array('B', 'B'),
-        array('C', 'C'),
-        array('D', 'D'),
-        array('E', 'E'),
-        array('F', 'F'),
-        array('G', 'G'),
-        array('H', 'H'),
-        array('I', 'I'),
-        array('J', 'J'),
-        array('K', 'K'),
-        array('L', 'L'),
-        array('M', 'M'),
-        array('N', 'N'),
-        array('O', 'O'),
-        array('P', 'P'),
-        array('Q', 'Q'),
-        array('R', 'R'),
-        array('S', 'S'),
-        array('T', 'T'),
-        array('U', 'U'),
-        array('V', 'V'),
-        array('W', 'W'),
-        array('X', 'X'),
-        array('Y', 'Y'),
-        array('Z', 'Z'),
-    );
+    return [
+        ['A', 'A'],
+        ['B', 'B'],
+        ['C', 'C'],
+        ['D', 'D'],
+        ['E', 'E'],
+        ['F', 'F'],
+        ['G', 'G'],
+        ['H', 'H'],
+        ['I', 'I'],
+        ['J', 'J'],
+        ['K', 'K'],
+        ['L', 'L'],
+        ['M', 'M'],
+        ['N', 'N'],
+        ['O', 'O'],
+        ['P', 'P'],
+        ['Q', 'Q'],
+        ['R', 'R'],
+        ['S', 'S'],
+        ['T', 'T'],
+        ['U', 'U'],
+        ['V', 'V'],
+        ['W', 'W'],
+        ['X', 'X'],
+        ['Y', 'Y'],
+        ['Z', 'Z'],
+    ];
   }
 
   /**
@@ -64,23 +64,24 @@ class FrenchPhoneticAlgorithmsTest extends \PHPUnit\Framework\TestCase
 
   public function testFrenchPhoneticSentence()
   {
-    $testArray = array(
-        'Müller Lüdenscheidt'         => array('Müller' => 'MUL', 'Lüdenscheidt' => 'LUDANCHEID'),
-        'Müller-Lüdenscheidt'         => array('Müller-Lüdenscheidt' => 'MULERLUDANCHEID'),
-        "\n \t"                       => array(),
-        "test \xc2\x88"               => array('test' => 'TES'),
-        'Ã ¤'                         => array('Ã' => 'A'),
-        'test'                        => array('test' => 'TES'),
-        'text'                        => array('text' => 'TEX'),
-        'Ein Satz mit vielen Wortern' => array('Ein'     => 'IN',
-                                               'Satz'    => 'SATZ',
-                                               'mit'     => 'MI',
-                                               'vielen'  => 'VIELAN',
-                                               'Wortern' => 'ORTERN',
-        ),
-        '中 文 空 白'                     => array('中' => 'ZON', '文' => 'WAN', '空' => 'KON', '白' => 'BAI'),
+    $testArray = [
+        'Müller Lüdenscheidt'         => ['Müller' => 'MUL', 'Lüdenscheidt' => 'LUDANCHEID'],
+        'Müller-Lüdenscheidt'         => ['Müller-Lüdenscheidt' => 'MULERLUDANCHEID'],
+        "\n \t"                       => [],
+        "test \xc2\x88"               => ['test' => 'TES'],
+        'Ã ¤'                         => ['Ã' => 'A'],
+        'test'                        => ['test' => 'TES'],
+        'text'                        => ['text' => 'TEX'],
+        'Ein Satz mit vielen Wortern' => [
+            'Ein'     => 'IN',
+            'Satz'    => 'SATZ',
+            'mit'     => 'MI',
+            'vielen'  => 'VIELAN',
+            'Wortern' => 'ORTERN',
+        ],
+        '中 文 空 白'                     => ['中' => 'ZON', '文' => 'WAN', '空' => 'KON', '白' => 'BAI'],
 
-    );
+    ];
 
 
     $phonetic = new Phonetic('fr');
@@ -93,7 +94,7 @@ class FrenchPhoneticAlgorithmsTest extends \PHPUnit\Framework\TestCase
 
   public function testFrenchPhoneticWord()
   {
-    $testArray = array(
+    $testArray = [
         'Breschnew'           => 'BRECHNEW',
         'Müller Lüdenscheidt' => 'MULERLUDANCHEID',
         'Müller-Lüdenscheidt' => 'MULERLUDANCHEID',
@@ -169,7 +170,7 @@ class FrenchPhoneticAlgorithmsTest extends \PHPUnit\Framework\TestCase
         'Lübyien'             => 'LUBIN',
         'Lybien'              => 'LIBIN',
 
-    );
+    ];
 
     $phonetic = new PhoneticFrench();
     for ($i = 0; $i < 2; $i++) { // keep this loop for simple performance tests
@@ -200,14 +201,14 @@ class FrenchPhoneticAlgorithmsTest extends \PHPUnit\Framework\TestCase
   /**
    * @return array
    */
-  public function wordsProvider()
+  public function wordsProvider(): array
   {
-    return array(
-        array('OLJ', 'Holger'),
-        array('OLTERSDORF', 'Woltersdorf'),
-        array('BRECHNEW', 'Breschnew'),
-        array('MULERLUDANCHEID', 'Müller-Lüdenscheidt'),
-        array('OUIKIPEDIA', 'Wikipedia'),
-    );
+    return [
+        ['OLJ', 'Holger'],
+        ['OLTERSDORF', 'Woltersdorf'],
+        ['BRECHNEW', 'Breschnew'],
+        ['MULERLUDANCHEID', 'Müller-Lüdenscheidt'],
+        ['OUIKIPEDIA', 'Wikipedia'],
+    ];
   }
 }

@@ -14,5 +14,5 @@ interface PhoneticInterface
    *
    * @return string
    */
-  public function phonetic_word($word);
+  public function phonetic_word($word): string;
 }

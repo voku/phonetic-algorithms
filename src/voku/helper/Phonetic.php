@@ -45,12 +45,12 @@ final class Phonetic
    */
   public function __construct($language = 'de')
   {
-    if (array_key_exists($language, $this->availableLanguages) === false) {
+    if (\array_key_exists($language, $this->availableLanguages) === false) {
       throw new PhoneticExceptionLanguageNotExists('language not supported: ' . $language);
     }
 
     $className = '\\voku\\helper\\Phonetic' . $this->availableLanguages[$language];
-    if (class_exists($className) === false) {
+    if (\class_exists($className) === false) {
       throw new PhoneticExceptionClassNotExists('phonetic class not found: ' . $className);
     }
 
@@ -68,7 +68,7 @@ final class Phonetic
   public function phonetic_matches($needle, array $haystack)
   {
     $needleResult = $this->phonetic_sentence($needle);
-    if (count($needleResult) === 0) {
+    if (\count($needleResult) === 0) {
       return array();
     }
 
@@ -84,7 +84,7 @@ final class Phonetic
     }
 
     $haystackResult = $this->phonetic_sentence($haystack);
-    if (count($haystackResult) === 0) {
+    if (\count($haystackResult) === 0) {
       return array();
     }
 
@@ -101,14 +101,14 @@ final class Phonetic
       }
     }
 
-    if (count($result) > 0) {
-      uasort(
+    if (\count($result) > 0) {
+      \uasort(
           $result, function ($a, $b) {
             if ($a == $b) {
               return 1;
             }
 
-            return (count($a) > count($b)) ? -1 : 1;
+            return (\count($a) > \count($b)) ? -1 : 1;
           }
       );
 
@@ -148,7 +148,7 @@ final class Phonetic
       $skipShortWords = null;
     }
 
-    if (is_array($input) === true) {
+    if (\is_array($input) === true) {
       foreach ($input as $inputKey => $inputString) {
         $words[$inputKey] = UTF8::str_to_words($inputString, '', true, $skipShortWords);
       }
@@ -161,15 +161,19 @@ final class Phonetic
         &&
         !isset($STOP_WORDS_CACHE[$this->language])
     ) {
-      $STOP_WORDS_CACHE[$this->language] = $this->stopWords->getStopWordsFromLanguage($this->language);
+      try {
+        $STOP_WORDS_CACHE[$this->language] = $this->stopWords->getStopWordsFromLanguage($this->language);
+      } catch (StopWordsLanguageNotExists $e) {
+        $STOP_WORDS_CACHE[$this->language] = array();
+      }
     }
 
     $return = array();
     foreach ($words as $wordKey => $word) {
 
-      if (is_array($word) === true) {
+      if (\is_array($word) === true) {
         foreach ($word as $wordInner) {
-          $return = array_replace_recursive(
+          $return = \array_replace_recursive(
               $return,
               $this->phonetic_sentence($wordInner, $useStopWords, $skipShortWords, $key !== null ? $key : $wordKey)
           );
@@ -181,7 +185,7 @@ final class Phonetic
       if (
           $useStopWords === true
           &&
-          in_array($word, $STOP_WORDS_CACHE[$this->language], true)
+          \in_array($word, $STOP_WORDS_CACHE[$this->language], true)
       ) {
         continue;
       }
