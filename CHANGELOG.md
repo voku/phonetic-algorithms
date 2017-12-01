@@ -4,6 +4,11 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [3.0.1] - 2017-12-01
+### Changed
+- drop support for PHP < 7.0 v2 
+- update phpunit-config
+
 ## [3.0.0] - 2017-11-13
 ### Changed
 - drop support for PHP < 7.0
