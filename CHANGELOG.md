@@ -4,6 +4,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [3.0.2] - 2017-12-03
+### Changed
+- update "voku/stop-words"
+
 ## [3.0.1] - 2017-12-01
 ### Changed
 - drop support for PHP < 7.0 v2 
