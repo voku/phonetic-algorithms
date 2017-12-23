@@ -4,6 +4,13 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [4.0.0] - 2017-12-23
+### Changed
+- update "Portable UTF8" from v4 -> v5
+
+-> this is a breaking change without API-changes - but the requirement from 
+   "Portable UTF8" has been changed (it no longer requires all polyfills from Symfony)
+
 ## [3.0.2] - 2017-12-03
 ### Changed
 - update "voku/stop-words"
