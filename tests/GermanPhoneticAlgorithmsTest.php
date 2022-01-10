@@ -658,7 +658,7 @@ class GermanPhoneticAlgorithmsTest extends \PHPUnit\Framework\TestCase
   public function wordsProvider(): array
   {
     return [
-        ['547', 'Holger'],
+        ['0547', 'Holger'],
         ['35278273', 'Woltersdorf'],
         ['17863', 'Breschnew'],
         ['65752682', 'Müller-Lüdenscheidt'],
@@ -672,7 +672,7 @@ class GermanPhoneticAlgorithmsTest extends \PHPUnit\Framework\TestCase
   public function xProvider(): array
   {
     return [
-        ['AX', '48'],
+        ['AX', '048'],
         ['IX', '048'],
         ['BX', '148'],
         ['DX', '248'],
@@ -692,10 +692,10 @@ class GermanPhoneticAlgorithmsTest extends \PHPUnit\Framework\TestCase
   {
     return [
       # X not after C, K, Q = '48'
-      ['AX', '48'],
+      ['AX', '048'],
       ['BX', '148'],
       ['DX', '248'],
-      ['EX', '48'],
+      ['EX', '048'],
       ['FX', '348'],
       ['GX', '48'],
       ['HX', '48'],

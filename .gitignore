@@ -2,7 +2,9 @@
 
 .idea
 
+# phpunit
 build/
+.phpunit.result.cache
 
 # composer
 vendor
