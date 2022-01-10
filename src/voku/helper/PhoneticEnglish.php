@@ -18,7 +18,7 @@ final class PhoneticEnglish implements PhoneticInterface
    * - http://php.net/manual/en/function.metaphone.php
    *
    *
-   * @param $word
+   * @param string $word
    *
    * @return string
    */

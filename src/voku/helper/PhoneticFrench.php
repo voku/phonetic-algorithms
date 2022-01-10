@@ -80,7 +80,7 @@ final class PhoneticFrench implements PhoneticInterface
    *
    * Édouard BERGÉ
    *
-   * @param $word
+   * @param string $word
    *
    * @return string
    */

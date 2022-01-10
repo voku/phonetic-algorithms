@@ -12,7 +12,7 @@ namespace voku\helper;
 final class Phonetic
 {
   /**
-   * @var array
+   * @var array{de: string, en: string, fr: string}
    */
   private $availableLanguages = array(
       'de' => 'German',
@@ -61,15 +61,15 @@ final class Phonetic
 
   /**
    * @param string $needle
-   * @param array  $haystack
+   * @param array<int, string> $haystack
    *
-   * @return array
+   * @return array<string, string>|array<int, array<string, string>>
    */
   public function phonetic_matches($needle, array $haystack)
   {
     $needleResult = $this->phonetic_sentence($needle);
     if (\count($needleResult) === 0) {
-      return array();
+      return [];
     }
 
     $isAssoc = true;
@@ -85,10 +85,10 @@ final class Phonetic
 
     $haystackResult = $this->phonetic_sentence($haystack);
     if (\count($haystackResult) === 0) {
-      return array();
+      return [];
     }
 
-    $result = array();
+    $result = [];
     foreach ($haystackResult as $haystackResultKey => $haystackResultWords) {
       foreach ($haystackResultWords as $haystackWord => $haystackCode) {
 
@@ -103,7 +103,7 @@ final class Phonetic
 
     if (\count($result) > 0) {
       \uasort(
-          $result, function ($a, $b) {
+          $result, static function ($a, $b) {
             if ($a == $b) {
               return 1;
             }
@@ -113,8 +113,8 @@ final class Phonetic
       );
 
       if ($isAssoc) {
-        $resultTmp = array();
-        foreach ($result as $keyTmp => $resultInner) {
+        $resultTmp = [];
+        foreach ($result as $resultInner) {
           foreach ($resultInner as $resultInnerKey => $resultInnerValue) {
             $resultTmp[$resultInnerValue] = $resultInnerKey;
           }
@@ -136,13 +136,13 @@ final class Phonetic
    *
    * @param int             $key
    *
-   * @return array <p>key === orig word<br />value === code word</p>
+   * @return array<string, string>|array<int, array<string, string>> <p>key === orig word<br />value === code word</p>
    */
   public function phonetic_sentence($input, $useStopWords = true, $skipShortWords = 2, $key = null)
   {
     // init
-    $words = array();
-    static $STOP_WORDS_CACHE = array();
+    $words = [];
+    static $STOP_WORDS_CACHE = [];
 
     if ($skipShortWords === false) {
       $skipShortWords = null;
@@ -164,11 +164,11 @@ final class Phonetic
       try {
         $STOP_WORDS_CACHE[$this->language] = $this->stopWords->getStopWordsFromLanguage($this->language);
       } catch (StopWordsLanguageNotExists $e) {
-        $STOP_WORDS_CACHE[$this->language] = array();
+        $STOP_WORDS_CACHE[$this->language] = [];
       }
     }
 
-    $return = array();
+    $return = [];
     foreach ($words as $wordKey => $word) {
 
       if (\is_array($word) === true) {

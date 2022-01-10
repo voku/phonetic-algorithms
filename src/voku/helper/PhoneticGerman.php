@@ -273,14 +273,6 @@ final class PhoneticGerman implements PhoneticInterface
       $lastCode = $currentCode;
     }
 
-    //
-    // 7. fallback to a empty string
-    //
-
-    if ($phoneticCode === null) {
-      return '';
-    }
-
     return $phoneticCode;
   }
 }
