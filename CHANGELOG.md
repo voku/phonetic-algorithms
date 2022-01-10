@@ -4,6 +4,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [5.0.0] - 2021-01-11
+### Changed
+- update "Portable UTF8" from v5 -> v6
+
 ## [4.0.0] - 2017-12-23
 ### Changed
 - update "Portable UTF8" from v4 -> v5
