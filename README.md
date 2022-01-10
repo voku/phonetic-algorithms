@@ -1,8 +1,5 @@
 [![Build Status](https://github.com/voku/phonetic-algorithms/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/voku/phonetic-algorithms/actions)
 [![Coverage Status](https://coveralls.io/repos/github/voku/phonetic-algorithms/badge.svg?branch=master)](https://coveralls.io/github/voku/phonetic-algorithms?branch=master)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/voku/phonetic-algorithms/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/voku/phonetic-algorithms/?branch=master)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/6b5ba69c2fa640d6b3ce13e784e4cf64)](https://www.codacy.com/app/voku/phonetic-algorithms?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=voku/phonetic-algorithms&amp;utm_campaign=Badge_Grade)
-[![SensioLabsInsight](https://insight.sensiolabs.com/projects/0a9c0c3c-099f-44ab-b800-f1da0742d5af/mini.png)](https://insight.sensiolabs.com/projects/0a9c0c3c-099f-44ab-b800-f1da0742d5af)
 [![Latest Stable Version](https://poser.pugx.org/voku/phonetic-algorithms/v/stable)](https://packagist.org/packages/voku/phonetic-algorithms) 
 [![Total Downloads](https://poser.pugx.org/voku/phonetic-algorithms/downloads)](https://packagist.org/packages/voku/phonetic-algorithms) 
 [![Latest Unstable Version](https://poser.pugx.org/voku/phonetic-algorithms/v/unstable)](https://packagist.org/packages/voku/phonetic-algorithms)
