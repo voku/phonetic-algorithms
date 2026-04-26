@@ -100,6 +100,10 @@ final class PhoneticGerman implements PhoneticInterface
 
     $word = (string)\preg_replace('/[^a-zA-Z]/', '', $word);
 
+    if ($word === '') {
+      return '';
+    }
+
     //
     // 5. calculate the code
     //
