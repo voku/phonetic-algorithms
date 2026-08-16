@@ -14,12 +14,11 @@ composer.lock
 /tools/*/vendor/
 /tools/*/composer.lock
 
-# agent-loop: disposable workflow state.
-# The board, the tasks, the contracts, the run receipts and the learning
-# findings are tracked; navigation indexes, compiled briefings and the
-# pruneable session memory are not.
+# agent-loop: durable repository state remains tracked; derived/run-local state does not.
+# Keep todo/, tasks/, contracts/, learning/ and init.json in Git so work stays resumable.
 /.agent-loop/map/
 /.agent-loop/recall/
+/.agent-loop/runs/
 /.agent-loop/sessions/
-/.agent-loop/runs/*/tmp/
 /.agent-loop/edit/
+/.agent-loop/tool-inventory.json
