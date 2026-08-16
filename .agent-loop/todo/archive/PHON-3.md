@@ -6,7 +6,7 @@
 - **Domain:** phonetic
 - **Created:** 2026-08-16T15:31:45+00:00
 - **Updated:** 2026-08-16T15:47:06+00:00
-- **Summary:** New PhoneticSpanish class implementing the published Spanish-Metaphone rule set, wired into Phonetic('es').
+- **Summary:** New PhoneticSpanish class implementing the repository-defined Spanish phonetic rule set, wired into Phonetic('es').
 - **Validation:** php vendor/bin/phpunit -c phpunit.xml
 - **Priority:** 3
 - **Wave:** 2

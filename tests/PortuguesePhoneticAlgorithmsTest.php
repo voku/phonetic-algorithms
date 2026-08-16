@@ -29,8 +29,10 @@ class PortuguesePhoneticAlgorithmsTest extends \PHPUnit\Framework\TestCase
       # "s" between two vowels = /z/ = "Z"
       ['casa', 'KAZA'],
       ['coisa', 'KOIZA'],
-      # "ss" stays /s/
+      # duplicate consonants collapse to one key character
       ['massa', 'MASA'],
+      ['carro', 'KARO'],
+      ['caro', 'KARO'],
       # "ch" and "x" = /ʃ/ = "X"
       ['chave', 'XAVE'],
       ['peixe', 'PEIXE'],
