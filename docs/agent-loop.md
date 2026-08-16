@@ -11,11 +11,11 @@ supports PHP 7.x and its CI matrix runs `composer update` from PHP 7.1 upwards.
 Putting agent-loop into the root `require-dev` would make that install
 unsolvable on every old PHP version.
 
-It therefore lives in its own Composer project, the same pattern agent-loop
-itself uses for `slop-scan`:
+It therefore lives in its own Composer project:
 
 ```text
-tools/agent-loop/composer.json      # requires voku/agent-loop
+tools/agent-loop/composer.json      # pins the tested agent-loop release
+tools/agent-loop/composer.lock      # pins the complete isolated tool graph
 tools/agent-loop/vendor/bin/...     # not tracked
 bin/agent-loop                      # wrapper used by the Makefile and the agent
 ```
@@ -27,13 +27,18 @@ make agent_loop_install       # composer install --working-dir=tools/agent-loop
 bin/agent-loop init status
 ```
 
-`init status` prints the exact activation commands for this checkout. The
-projected Claude Code assets under `.claude/` are generated from the Composer
-package and are refreshed with:
+`init status` prints the exact activation commands for this checkout. Host
+assets such as `.claude/` are generated from the pinned Composer package and are
+**not tracked**; this avoids keeping a second, stale copy of package-owned
+workflow guidance in the repository. Generate or refresh them locally with:
 
 ```bash
 make install_agent_assets     # or: bin/agent-loop init install-assets --agent=claude
 ```
+
+The tracked `AGENTS.md` and `CLAUDE.md` files remain the small repository
+routers, so a clean clone can discover how to install and activate the tooling
+without committing generated host projections.
 
 ## Workflow state
 
@@ -42,11 +47,15 @@ make install_agent_assets     # or: bin/agent-loop init install-assets --agent=c
 | `.agent-loop/todo/` | yes | the Kanban board and its cards |
 | `.agent-loop/tasks/` | yes | the task definition the verifier reads |
 | `.agent-loop/contracts/` | yes | the approved scope/validation contract per task |
-| `.agent-loop/runs/` | yes | the durable close and verification receipts |
-| `.agent-loop/learning/` | yes | validated findings |
+| `.agent-loop/runs/` | yes | durable Run identity, close and verification receipts |
+| `.agent-loop/learning/` | yes | validated findings and durable Run-learning decisions |
 | `.agent-loop/map/` | no | agent-map navigation index, disposable |
 | `.agent-loop/recall/` | no | compiled briefings and review prompts, regenerable |
 | `.agent-loop/sessions/` | no | pruneable working memory of a run |
+
+The durability split is intentional: pruning Session state must not erase the
+approved Contract, governed Run identity, final verification receipts, or
+Learning close-out needed for later audit.
 
 ## The board
 
@@ -61,43 +70,22 @@ A card needs an **Agent Task Brief** before it may enter `READY`.
 
 ## One governed task, end to end
 
-```bash
-bin/agent-loop board card move PHON-3 --to=DOING --actor=<name>
+Use the installed package-owned skills for the current detailed command
+sequence. The tracked router deliberately does not copy that procedure. The
+stable high-level path is:
 
-bin/agent-loop map refresh
-bin/agent-loop map search-index build
-
-bin/agent-loop workflow plan PHON-3 \
-  --by <name> \
-  --file src/voku/helper/PhoneticSpanish.php \
-  --goal '...' \
-  --validation 'php vendor/bin/phpunit -c phpunit.xml'
-
-bin/agent-loop workflow approve PHON-3 --by <name>
-# -> read .agent-loop/recall/PHON-3/system.md before touching code
-
-# ... implement ...
-
-php vendor/bin/phpunit -c phpunit.xml
-bin/agent-loop session validation record PHON-3 \
-  --contract-revision 1 \
-  --command 'php vendor/bin/phpunit -c phpunit.xml' \
-  --status passed --exit-code 0 --by <name>
-
-bin/agent-loop review blindspots PHON-3
-bin/agent-loop session checkpoint PHON-3 --title 'review blindspots PHON-3' --body '...'
-
-bin/agent-loop workflow learn PHON-3 --status no_durable_learning --by <name> --reason '...'
-bin/agent-loop verify --task-id=PHON-3
-bin/agent-loop workflow close PHON-3 --status done
-bin/agent-loop workflow status PHON-3 --expect complete
+```text
+PLAN -> APPROVE -> CONTEXT -> IMPLEMENT -> VALIDATE -> REVIEW -> LEARN -> CLOSE
 ```
 
-`workflow approve` refuses to run while the agent-map snapshot is older than the
-PHP files in scope, so `map refresh` belongs *before* approval.
+Before mutating a durable task, inspect its current persisted status. Build the
+map and search index before approval when ranked map evidence is expected. Run
+the exact validation obligations from the approved Contract, preserve observed
+results, and close only when the current Run gates pass.
 
 ## Findings about the workflow itself
 
 Observations about agent-loop are **not** fixed inside a product task. They are
-collected on the meta card `PHON-9` and written up in
-[`docs/agent-loop-dogfood.md`](agent-loop-dogfood.md).
+collected as normal validated Learning findings with the affected external
+package identified, so they can be handed back to the owning agent-* repository
+without maintaining a second prose feedback lifecycle.

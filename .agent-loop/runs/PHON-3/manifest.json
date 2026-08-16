@@ -1,0 +1,168 @@
+{
+    "disagreements": [],
+    "mode": "governed",
+    "next_action": "none",
+    "references": {
+        "approval": {
+            "approved_at": "2026-08-16T15:45:32+00:00",
+            "approved_by": "lars",
+            "contract_revision": 1,
+            "observation_mode": "checked",
+            "owner": "agent-loop",
+            "source": {
+                "path": ".agent-loop/contracts/PHON-3/contract.json",
+                "sha256": "sha256:b833b82176cccc6979fc805f8bc6b3e3aa78229218944ee58c97af20b0e1c79a"
+            },
+            "state": "current"
+        },
+        "board": {
+            "card_id": "PHON-3",
+            "configuration": {
+                "mode": "json",
+                "source": {
+                    "path": ".agent-loop/todo/kanban.config.json",
+                    "sha256": "sha256:f7f78e3151026a502ff84f6376e1846679854544bd17058eca721c2d85601b2b"
+                }
+            },
+            "lane": "VERIFY",
+            "observation_mode": "checked",
+            "owner": "agent-kanban",
+            "revision": "00a430cd436e0d4aa664e18600d6487b408c7872f4bf915c68ccccfdd8d894dc",
+            "source": {
+                "path": ".agent-loop/todo/cards/PHON-3.md",
+                "sha256": "sha256:00a430cd436e0d4aa664e18600d6487b408c7872f4bf915c68ccccfdd8d894dc"
+            },
+            "state": "linked",
+            "status": "Selected"
+        },
+        "contract": {
+            "acceptance_criteria": [
+                "Every rule in the class docblock rule table is pinned by at least one data-provider assertion.",
+                "b/v, seseo and yeismo pairs produce the same key; \"ano\"/\"ano-with-tilde\" stay distinguishable.",
+                "Phonetic(\"es\") returns the same code as PhoneticSpanish for the same word."
+            ],
+            "goal": "Add a documented Spanish phonetic algorithm as PhoneticSpanish and register it as language \"es\" in Phonetic.",
+            "observation_mode": "checked",
+            "owner": "agent-loop",
+            "revision": 1,
+            "source": {
+                "path": ".agent-loop/contracts/PHON-3/contract.json",
+                "sha256": "sha256:b833b82176cccc6979fc805f8bc6b3e3aa78229218944ee58c97af20b0e1c79a"
+            },
+            "state": "approved"
+        },
+        "edit": {
+            "observation_mode": "checked",
+            "owner": "agent-loop",
+            "state": "none"
+        },
+        "execution_contract": {
+            "contract_revision": 1,
+            "contract_source": {
+                "path": ".agent-loop/contracts/PHON-3/contract.json",
+                "sha256": "sha256:b833b82176cccc6979fc805f8bc6b3e3aa78229218944ee58c97af20b0e1c79a"
+            },
+            "observation_mode": "checked",
+            "owner": "agent-loop",
+            "required": false,
+            "state": "not_required"
+        },
+        "learning": {
+            "decided_at": "2026-08-16T15:47:06+00:00",
+            "decided_by": "lars",
+            "decision": "no_durable_learning",
+            "observation_mode": "checked",
+            "owner": "agent-learning",
+            "run_id": "run:PHON-3:50ede49613978cc2",
+            "source": {
+                "path": ".agent-loop/learning/history/run-learning/c9d6bd3256cdcbf0d058e83884e694bbfa3a63f729a37675079eabbdb0455445.json",
+                "sha256": "sha256:35b2c84eda18558370da9648c88eb49fa4ab586272634320c4615efa4b3b5a1c"
+            },
+            "state": "decided"
+        },
+        "map": {
+            "observation_mode": "checked",
+            "owner": "agent-map",
+            "path": ".agent-loop/map/php-symbols.json",
+            "snapshot": "sha256:a9f882505001578f14d58cdd859583f5127cd066fbf8d29a94cbf8cffdc14056",
+            "source": {
+                "path": ".agent-loop/map/php-symbols.json",
+                "sha256": "sha256:005346efc95812311cd71f0068140aee4bbb2bf2eebfd2b34c694d32a8ce8d7d"
+            },
+            "stale_entries": [
+                {
+                    "path": "src/voku/helper/Phonetic.php",
+                    "reason": "hash"
+                }
+            ],
+            "state": "stale"
+        },
+        "outcome_lineage": {
+            "observation_mode": "checked",
+            "owner": "agent-learning",
+            "run_id": "run:PHON-3:50ede49613978cc2",
+            "state": "run_bound"
+        },
+        "recall": {
+            "bundle_sha256": "835f64e7dfd2e7c9ff25ed91226bcaa8cd2f0e892a8d00c73692e72d541b4044",
+            "compilation_id": "compilation.PHON-3.2026-08-16-154532.9b0c54cc",
+            "observation_mode": "checked",
+            "owner": "agent-recall-compiler",
+            "snapshot_sha256": "a0da53c5db79d4429e7ade8da08edfabd8c75d12728f48e237dc673647deb54a",
+            "source": {
+                "path": ".agent-loop/recall/PHON-3/meta.json",
+                "sha256": "sha256:beef1981f6e9a81489f0961d07c53cf59a312de46c47f88c266edab2c8a62097"
+            },
+            "state": "compiled"
+        },
+        "review": {
+            "observation_mode": "checked",
+            "owner": "agent-recall-compiler",
+            "source": {
+                "path": ".agent-loop/recall/PHON-3/reviews/PHON-3.blindspots.json",
+                "sha256": "sha256:ba40fd94ffdfa22aee73b69300204960ffa22081c29e1efb905e7d21e404db98"
+            },
+            "state": "ok"
+        },
+        "search_index": {
+            "observation_mode": "checked",
+            "owner": "agent-map",
+            "path": ".agent-loop/map/search.sqlite",
+            "source": {
+                "path": ".agent-loop/map/search.sqlite",
+                "sha256": "sha256:3deb1223afc763077699d7898599d92ead8a5d648434bef7fb4c1da15e83d662"
+            },
+            "state": "unavailable"
+        },
+        "session": {
+            "base_commit": null,
+            "ephemeral": false,
+            "observation_mode": "checked",
+            "owner": "agent-session",
+            "session_id": "2026-08-16-phon-3-r1-11f244bb",
+            "source": {
+                "path": ".agent-loop/sessions/2026-08-16-phon-3-r1-11f244bb/session.json",
+                "sha256": "sha256:190ed6c29757f12b5d625941c96a7faf6554c4ae9cf1aed7e4f76fc9c27b698c"
+            },
+            "state": "done",
+            "task_id": "PHON-3"
+        },
+        "verification": {
+            "contract_revision": 1,
+            "implementation_snapshot": "sha256:ced9ca65bb453a2eca6aadd7be05a05ac7a65c874b6363153f3361b122601b98",
+            "observation_mode": "checked",
+            "owner": "agent-loop",
+            "run_id": "run:PHON-3:50ede49613978cc2",
+            "source": {
+                "path": ".agent-loop/runs/PHON-3/verification.json",
+                "sha256": "sha256:1cba2817a45403efad28802fa6f49cd4bdb493b6a6c7ea1c5c7790c1cac4c13c"
+            },
+            "source_session_id": "2026-08-16-phon-3-r1-11f244bb",
+            "state": "passed"
+        }
+    },
+    "run_id": "run:PHON-3:50ede49613978cc2",
+    "schema_version": "1.0",
+    "state": "complete",
+    "task_id": "PHON-3"
+}

@@ -1,0 +1,22 @@
+{
+    "contract_revision": 1,
+    "contract_sha256": "sha256:9bddaf177c674c57f1880ee4b6cd7e35f70cfdd2e9d430a7668ce690b6a1d60b",
+    "implementation_snapshot": "sha256:175e59343b4587a6d4b711c6bee970ade8d247656b42385186988fd1cc05ac78",
+    "kind": "run_verification_receipt",
+    "obligations": [
+        {
+            "command": "php vendor/bin/phpunit -c phpunit.xml",
+            "duration_ms": 151,
+            "executed_at": "2026-08-16T15:57:56+00:00",
+            "exit_code": 0,
+            "recorded_by": "lars",
+            "status": "passed"
+        }
+    ],
+    "run_id": "run:PHON-8:72c87bd924395152",
+    "schema_version": "1.1",
+    "source_session_id": "2026-08-16-phon-8-r1-16c14819",
+    "task_id": "PHON-8",
+    "verdict": "satisfied",
+    "verified_at": "2026-08-16T15:57:56+00:00"
+}

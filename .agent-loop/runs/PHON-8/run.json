@@ -1,0 +1,14 @@
+{
+    "contract_revision": 1,
+    "contract_source": {
+        "path": ".agent-loop/contracts/PHON-8/contract.json",
+        "sha256": "sha256:9bddaf177c674c57f1880ee4b6cd7e35f70cfdd2e9d430a7668ce690b6a1d60b"
+    },
+    "kind": "governed_run",
+    "learning_root": ".agent-loop/learning",
+    "prepared_at": "2026-08-16T15:57:00+00:00",
+    "run_id": "run:PHON-8:72c87bd924395152",
+    "schema_version": "1.0",
+    "session_id": "2026-08-16-phon-8-r1-16c14819",
+    "task_id": "PHON-8"
+}
