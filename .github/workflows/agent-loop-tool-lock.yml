@@ -1,0 +1,35 @@
+name: Agent Loop Tool Lock
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/agent-loop-tool-lock.yml'
+      - 'tools/agent-loop/composer.json'
+      - 'tools/agent-loop/composer.lock'
+
+permissions:
+  contents: read
+
+jobs:
+  resolve:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+          coverage: none
+          tools: composer:v2
+
+      - name: Resolve isolated tool graph
+        run: composer update --working-dir=tools/agent-loop --no-interaction --prefer-dist --no-progress
+
+      - name: Upload resolved lock
+        uses: actions/upload-artifact@v4
+        with:
+          name: agent-loop-tool-lock-${{ github.sha }}
+          path: tools/agent-loop/composer.lock
+          if-no-files-found: error
