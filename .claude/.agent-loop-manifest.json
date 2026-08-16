@@ -1,0 +1,39 @@
+{
+    "version": 2,
+    "kind": "hooks",
+    "agent": "claude",
+    "required_capabilities": [
+        "pre-tool-guardrail",
+        "session-bootstrap",
+        "subagent-bootstrap"
+    ],
+    "entries": [
+        {
+            "target": "hooks/context.php",
+            "source_id": "voku/agent-loop:hooks:claude:hooks/context.php",
+            "semantic_owner": "voku/agent-loop",
+            "source_path": "/home/user/phonetic-algorithms/tools/agent-loop/vendor/voku/agent-loop/docs/agents/claude-hooks/hooks/context.php",
+            "source_sha256": "sha256:f4b22118fcf76c8756828edad84e776628490ed490d116ececde07cb0a6dec56",
+            "representation_sha256": "sha256:f4b22118fcf76c8756828edad84e776628490ed490d116ececde07cb0a6dec56",
+            "adopted": false
+        },
+        {
+            "target": "hooks/pre_tool_use_policy.php",
+            "source_id": "voku/agent-loop:hooks:claude:hooks/pre_tool_use_policy.php",
+            "semantic_owner": "voku/agent-loop",
+            "source_path": "/home/user/phonetic-algorithms/tools/agent-loop/vendor/voku/agent-loop/docs/agents/claude-hooks/hooks/pre_tool_use_policy.php",
+            "source_sha256": "sha256:6f05b677b0a992216b7f833b0ecc8aa8ebcdaba7bfccba2ea98fa8e542298281",
+            "representation_sha256": "sha256:6f05b677b0a992216b7f833b0ecc8aa8ebcdaba7bfccba2ea98fa8e542298281",
+            "adopted": false
+        },
+        {
+            "target": "settings.json#hooks",
+            "source_id": "voku/agent-loop:hooks:claude:settings-hooks",
+            "semantic_owner": "voku/agent-loop",
+            "source_path": "/home/user/phonetic-algorithms/tools/agent-loop/vendor/voku/agent-loop/docs/agents/claude-hooks/hooks.json",
+            "source_sha256": "sha256:654bea7f0c1f8761c5154af92dadc00a59c4d5ad497c79cf3f078e76810d7942",
+            "representation_sha256": "sha256:b65a0b993f6b35d43b1de787e50450415893579e205fb94ea2e6b91d4a886090",
+            "adopted": false
+        }
+    ]
+}

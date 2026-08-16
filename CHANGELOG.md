@@ -3,6 +3,14 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+### Fixed
+- "PhoneticGerman": "C" after "R" is no longer coded as "8"
+
+-> The "Kölner Phonetik" code table only names "S" and "Z" as the exception for
+   "C" before "A, H, K, O, Q, U, X", so "R" was an extra rule that is not in the
+   specification. This changes the code of words like "Kirche" ("478" -> "474")
+   and therefore un-merges them from words like "Kirsche" ("478"). A phonetic
+   index that was built with an older release has to be rebuilt.
 
 ## [5.0.0] - 2021-01-11
 ### Changed

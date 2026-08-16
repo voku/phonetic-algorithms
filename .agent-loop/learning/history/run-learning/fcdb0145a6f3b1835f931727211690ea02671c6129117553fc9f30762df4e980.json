@@ -1,0 +1,17 @@
+{
+    "schema_version": "1.0",
+    "kind": "run_learning_decision",
+    "run_id": "run:PHON-1:0c4ad1323d77ba40",
+    "decision": "findings_recorded",
+    "decided_by": "lars",
+    "decided_at": "2026-08-16T15:37:38+00:00",
+    "reason": "The rule table of a phonetic class has to be cross-checked against its cited source and pinned per row; the self-contradiction in the table was the bug signal. Directly reusable for PHON-2..PHON-7.",
+    "finding_ids": [
+        "finding.2026-08-16.385c4b"
+    ],
+    "follow_up_ref": null,
+    "contract_revision": 1,
+    "implementation_snapshot": "sha256:ea7d1ca58fc513753d9f073bf67fd285cec25d9783ac3762bfac0e688f6a8c4f",
+    "validation_evidence_sha256": "sha256:86742fc12c133f72544701d41c9fbbb86458f6bd6c27101e0238f6f054ba2d2c",
+    "review_evidence_sha256": "sha256:f3f8a887551600c16f026fd3f1b10d8eab55c55cc82437361c182d84594c4a1f"
+}

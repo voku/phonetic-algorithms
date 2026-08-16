@@ -10,3 +10,16 @@ build/
 vendor
 composer.lock
 
+# agent-loop tooling (see docs/agent-loop.md)
+/tools/*/vendor/
+/tools/*/composer.lock
+
+# agent-loop: disposable workflow state.
+# The board, the tasks, the contracts, the run receipts and the learning
+# findings are tracked; navigation indexes, compiled briefings and the
+# pruneable session memory are not.
+/.agent-loop/map/
+/.agent-loop/recall/
+/.agent-loop/sessions/
+/.agent-loop/runs/*/tmp/
+/.agent-loop/edit/

@@ -196,6 +196,58 @@ class EnglishPhoneticAlgorithmsTest extends \PHPUnit\Framework\TestCase
   }
 
   /**
+   * The class documents itself as "metaphone" and is therefore only allowed to
+   * be a delegation to the native implementation, applied to the ascii-folded
+   * input. This pins the contract instead of the native output.
+   */
+  public function testIsNativeMetaphoneOnAsciiFoldedInput()
+  {
+    $phonetic = new PhoneticEnglish();
+
+    $words = [
+        'Thompson',
+        'Tomson',
+        'Knight',
+        'night',
+        'phone',
+        'fone',
+        'Müller',
+        'Mueller',
+        'Lüdenscheidt',
+        'Ærøskøbing',
+        'Ångström',
+        'Straße',
+    ];
+
+    foreach ($words as $word) {
+      self::assertSame(
+          \metaphone(\voku\helper\UTF8::to_ascii($word)),
+          $phonetic->phonetic_word($word),
+          'tested: ' . $word
+      );
+    }
+  }
+
+  /**
+   * "metaphone" only emits upper-case ascii letters, so a non-ascii input must
+   * be folded before it reaches the native function.
+   */
+  public function testOutputIsAlwaysUpperCaseAscii()
+  {
+    $phonetic = new PhoneticEnglish();
+
+    foreach (['Müller', 'Ångström', 'Køge', 'Łódź', 'Ceniow', '中文空白'] as $word) {
+      $code = $phonetic->phonetic_word($word);
+
+      self::assertSame(
+          1,
+          \preg_match('/^[A-Z]*$/', $code),
+          'tested: ' . $word . ' => ' . $code
+      );
+    }
+  }
+
+  /**
    * @param string $expected
    * @param string $word
    *

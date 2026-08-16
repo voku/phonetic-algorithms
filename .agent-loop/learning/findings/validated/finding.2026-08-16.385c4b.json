@@ -1,0 +1,20 @@
+{
+  "id": "finding.2026-08-16.385c4b",
+  "task_id": "PHON-1",
+  "session": "2026-08-16-phon-1-r1-1d3bab8c",
+  "created_at": "2026-08-16T15:37:38+00:00",
+  "created_by": "agent",
+  "scope": ["src/voku/helper"],
+  "observation": "PhoneticGerman carried its rule table as a docblock comment, and two rows of that table contradicted each other ('C before A,H,K,O,Q,U,X exception after S,Z = 4' vs. 'C after R,S,Z = 8'). The implementation followed the wrong row, which merged 'Kirche' and 'Kirsche' into one code.",
+  "evidence": [
+    {"type": "file_reference", "path": "src/voku/helper/PhoneticGerman.php", "line": 45},
+    {"type": "file_reference", "path": "tests/GermanPhoneticAlgorithmsTest.php", "line": 74}
+  ],
+  "hypothesis": "A transcribed rule table that is internally inconsistent points at a real coding bug, not at a documentation typo.",
+  "validated_conclusion": "For every phonetic class in this repository, the docblock rule table has to be cross-checked against the cited source and each row has to be pinned by a data-provider assertion; an inconsistency between two rows is treated as a bug in the code until the source says otherwise.",
+  "confidence": "high",
+  "validation_status": "validated",
+  "status": "validated",
+  "sensitivity": "public",
+  "pattern_key": "phonetic.rule_table_consistency"
+}
