@@ -3,6 +3,18 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+### Added
+- new language "it": "PhoneticItalian"
+- new language "es": "PhoneticSpanish"
+- new language "nl": "PhoneticDutch"
+- new language "pl": "PhoneticPolish"
+- new language "pt": "PhoneticPortuguese"
+
+-> These five languages have no single published standard, so each class carries
+   its complete sound table in its own docblock and every row of that table is
+   pinned by a test. They emit a readable upper-case key, like "PhoneticFrench"
+   does, not the digit code of "Kölner Phonetik".
+
 ### Fixed
 - "PhoneticGerman": "C" after "R" is no longer coded as "8"
 

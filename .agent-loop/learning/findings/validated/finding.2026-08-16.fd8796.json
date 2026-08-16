@@ -1,0 +1,21 @@
+{
+  "id": "finding.2026-08-16.fd8796",
+  "task_id": "PHON-9",
+  "session": "2026-08-16-phon-9-r1-92d68061",
+  "created_at": "2026-08-16T16:00:21+00:00",
+  "created_by": "agent",
+  "scope": [".agent-loop"],
+  "observation": "Two agent-loop gates pass on a string the acting agent writes itself. BlindSpotReviewer::REVIEW_MARKERS greps the recall and session text for 'review blindspots', so a checkpoint whose title contains that phrase flips the gate from warn to ok without anything checking that the report was read. 'session validation record --status passed --exit-code 0' takes the result as an argument, so a red test-suite can be recorded as green. Separately, 'board summary' prints a Done count that has no writer anywhere in voku/agent-kanban, so it stays 0 after seven archived cards.",
+  "evidence": [
+    {"type": "file_reference", "path": "tools/agent-loop/vendor/voku/agent-recall-compiler/src/Review/BlindSpotReviewer.php", "line": 19},
+    {"type": "file_reference", "path": "tools/agent-loop/vendor/voku/agent-kanban/src/Repository/BoardMetadata.php", "line": 42},
+    {"type": "file_reference", "path": "docs/agent-loop-dogfood.md", "line": 1}
+  ],
+  "hypothesis": "A deterministic gate that only matches a marker string measures compliance with the ritual, not the review.",
+  "validated_conclusion": "Read the agent-loop blind-spot and validation gates as prompts, not as proof: run the review because the generated prompt is useful, and keep the raw command output next to the recorded validation. Do not cite 'review ok' or 'validation recorded' as evidence that a review or a test run happened. The concrete gate improvements belong in voku/agent-loop and are written up in docs/agent-loop-dogfood.md sections 2.1, 2.2, 2.3 and 2.6.",
+  "confidence": "high",
+  "validation_status": "validated",
+  "status": "validated",
+  "sensitivity": "public",
+  "pattern_key": "agent-loop.self_declared_gates"
+}

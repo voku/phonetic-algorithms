@@ -12,7 +12,7 @@ namespace voku\helper;
 final class Phonetic
 {
   /**
-   * @var array{de: string, en: string, es: string, fr: string, it: string, nl: string, pl: string}
+   * @var array{de: string, en: string, es: string, fr: string, it: string, nl: string, pl: string, pt: string}
    */
   private $availableLanguages = array(
       'de' => 'German',
@@ -22,6 +22,7 @@ final class Phonetic
       'it' => 'Italian',
       'nl' => 'Dutch',
       'pl' => 'Polish',
+      'pt' => 'Portuguese',
   );
 
   /**

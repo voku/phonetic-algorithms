@@ -1,0 +1,17 @@
+{
+    "schema_version": "1.0",
+    "kind": "run_learning_decision",
+    "run_id": "run:PHON-9:5d76160f1c3a481f",
+    "decision": "findings_recorded",
+    "decided_by": "lars",
+    "decided_at": "2026-08-16T16:00:21+00:00",
+    "reason": "The gate weakness changes how this repository has to read agent-loop output from now on, so it is durable guidance and not just a report.",
+    "finding_ids": [
+        "finding.2026-08-16.fd8796"
+    ],
+    "follow_up_ref": null,
+    "contract_revision": 1,
+    "implementation_snapshot": "sha256:8778a9e3434f140dfe9be8dd451cfff56701d899cf02ed27e8b3ae8b6ad0b324",
+    "validation_evidence_sha256": "sha256:14378bd276d6b4868278d8779207fea0b2d87347a14f819be75516b7b6db9447",
+    "review_evidence_sha256": "sha256:4840e9d9a862214ac17274dec3effde90848bb36a4e971750082292debe129e7"
+}

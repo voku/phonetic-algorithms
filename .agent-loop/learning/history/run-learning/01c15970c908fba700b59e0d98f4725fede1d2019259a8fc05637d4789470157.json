@@ -1,0 +1,15 @@
+{
+    "schema_version": "1.0",
+    "kind": "run_learning_decision",
+    "run_id": "run:PHON-6:04b221feae910d6b",
+    "decision": "no_durable_learning",
+    "decided_by": "lars",
+    "decided_at": "2026-08-16T15:56:38+00:00",
+    "reason": "This run consumed finding.2026-08-16 diacritic_fold_or_expand instead of producing a new one; the \"ss\" detail is a class-local consequence of the intervocalic-s rule and lives in the docblock.",
+    "finding_ids": [],
+    "follow_up_ref": null,
+    "contract_revision": 1,
+    "implementation_snapshot": "sha256:f54a370c60d380908d4448f4074b0ada22ee6d8ba9d07c43fa35d3b13b440f01",
+    "validation_evidence_sha256": "sha256:7988d23feb3662d59e31923c6c2dc16817d26755213f91747340349bbee6ff71",
+    "review_evidence_sha256": "sha256:17966ad06d1ab4a460dd7ee0c3f3206142665e2cc3ac2389c725738dde32ed7c"
+}

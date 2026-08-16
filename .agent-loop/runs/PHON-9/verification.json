@@ -1,0 +1,22 @@
+{
+    "contract_revision": 1,
+    "contract_sha256": "sha256:8ee39698ee9fc3af989ee1ba0235741ee17e637b0f615ee666875bb1708ab838",
+    "implementation_snapshot": "sha256:8778a9e3434f140dfe9be8dd451cfff56701d899cf02ed27e8b3ae8b6ad0b324",
+    "kind": "run_verification_receipt",
+    "obligations": [
+        {
+            "command": "bin/agent-loop learn validate",
+            "duration_ms": null,
+            "executed_at": "2026-08-16T16:00:21+00:00",
+            "exit_code": 0,
+            "recorded_by": "lars",
+            "status": "passed"
+        }
+    ],
+    "run_id": "run:PHON-9:5d76160f1c3a481f",
+    "schema_version": "1.1",
+    "source_session_id": "2026-08-16-phon-9-r1-92d68061",
+    "task_id": "PHON-9",
+    "verdict": "satisfied",
+    "verified_at": "2026-08-16T16:00:29+00:00"
+}

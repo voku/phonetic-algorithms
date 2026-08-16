@@ -1,0 +1,163 @@
+{
+    "disagreements": [],
+    "mode": "governed",
+    "next_action": "none",
+    "references": {
+        "approval": {
+            "approved_at": "2026-08-16T15:59:06+00:00",
+            "approved_by": "lars",
+            "contract_revision": 1,
+            "observation_mode": "checked",
+            "owner": "agent-loop",
+            "source": {
+                "path": ".agent-loop/contracts/PHON-9/contract.json",
+                "sha256": "sha256:8ee39698ee9fc3af989ee1ba0235741ee17e637b0f615ee666875bb1708ab838"
+            },
+            "state": "current"
+        },
+        "board": {
+            "card_id": "PHON-9",
+            "configuration": {
+                "mode": "json",
+                "source": {
+                    "path": ".agent-loop/todo/kanban.config.json",
+                    "sha256": "sha256:f7f78e3151026a502ff84f6376e1846679854544bd17058eca721c2d85601b2b"
+                }
+            },
+            "lane": "VERIFY",
+            "observation_mode": "checked",
+            "owner": "agent-kanban",
+            "revision": "780d1bd6a8fd508db035f29bee0dc63d3d896422c061c0d8bbed28bdce8dd6a6",
+            "source": {
+                "path": ".agent-loop/todo/cards/PHON-9.md",
+                "sha256": "sha256:780d1bd6a8fd508db035f29bee0dc63d3d896422c061c0d8bbed28bdce8dd6a6"
+            },
+            "state": "linked",
+            "status": "Selected"
+        },
+        "contract": {
+            "acceptance_criteria": [
+                "Every recorded observation names the command output or the source file that shows it.",
+                "Observations that could not be verified are marked as such instead of being recorded as facts.",
+                "What the workflow caught is recorded next to what it missed."
+            ],
+            "goal": "Record every observation about the agent-loop workflow made while running PHON-1..PHON-8, with exact evidence, so the workflow can be improved afterwards.",
+            "observation_mode": "checked",
+            "owner": "agent-loop",
+            "revision": 1,
+            "source": {
+                "path": ".agent-loop/contracts/PHON-9/contract.json",
+                "sha256": "sha256:8ee39698ee9fc3af989ee1ba0235741ee17e637b0f615ee666875bb1708ab838"
+            },
+            "state": "approved"
+        },
+        "edit": {
+            "observation_mode": "checked",
+            "owner": "agent-loop",
+            "state": "none"
+        },
+        "execution_contract": {
+            "contract_revision": 1,
+            "contract_source": {
+                "path": ".agent-loop/contracts/PHON-9/contract.json",
+                "sha256": "sha256:8ee39698ee9fc3af989ee1ba0235741ee17e637b0f615ee666875bb1708ab838"
+            },
+            "observation_mode": "checked",
+            "owner": "agent-loop",
+            "required": false,
+            "state": "not_required"
+        },
+        "learning": {
+            "decided_at": "2026-08-16T16:00:21+00:00",
+            "decided_by": "lars",
+            "decision": "findings_recorded",
+            "observation_mode": "checked",
+            "owner": "agent-learning",
+            "run_id": "run:PHON-9:5d76160f1c3a481f",
+            "source": {
+                "path": ".agent-loop/learning/history/run-learning/a1a9bd3e5d11e56733b2f0cc4b752bf32be0a0bbd68389c0e408226f184633c8.json",
+                "sha256": "sha256:ab79cae0a9afc2513747d382c1717e6cd6651074a63e4080fb10863338ec5719"
+            },
+            "state": "decided"
+        },
+        "map": {
+            "observation_mode": "checked",
+            "owner": "agent-map",
+            "path": ".agent-loop/map/php-symbols.json",
+            "snapshot": "sha256:720c2a6a183186a67393b6426def879339c57fc4c0f90b0a401d8c8b721e6a51",
+            "source": {
+                "path": ".agent-loop/map/php-symbols.json",
+                "sha256": "sha256:6e8b00fb1a9b2a897d0cde170878b34943258a2a9f641d8318a7498b653b499d"
+            },
+            "state": "ready"
+        },
+        "outcome_lineage": {
+            "observation_mode": "checked",
+            "owner": "agent-learning",
+            "run_id": "run:PHON-9:5d76160f1c3a481f",
+            "state": "run_bound"
+        },
+        "recall": {
+            "bundle_sha256": "48a7a6c44cd0ed812b5581748fb8dfb6ed2b75bae9c581bcbbd031fee2837668",
+            "compilation_id": "compilation.PHON-9.2026-08-16-155906.cfdc15eb",
+            "observation_mode": "checked",
+            "owner": "agent-recall-compiler",
+            "snapshot_sha256": "e09aa94ae2906183eaee274e8d23591f118b474c26c309196b9ba02aa78ae0f9",
+            "source": {
+                "path": ".agent-loop/recall/PHON-9/meta.json",
+                "sha256": "sha256:818b135dbd5188d4c33faacf1cbd78ebbefcd81c6d725ea078ed2f8ba1defb12"
+            },
+            "state": "compiled"
+        },
+        "review": {
+            "observation_mode": "checked",
+            "owner": "agent-recall-compiler",
+            "source": {
+                "path": ".agent-loop/recall/PHON-9/reviews/PHON-9.blindspots.json",
+                "sha256": "sha256:4840e9d9a862214ac17274dec3effde90848bb36a4e971750082292debe129e7"
+            },
+            "state": "ok"
+        },
+        "search_index": {
+            "observation_mode": "checked",
+            "owner": "agent-map",
+            "path": ".agent-loop/map/search.sqlite",
+            "snapshot": "sha256:720c2a6a183186a67393b6426def879339c57fc4c0f90b0a401d8c8b721e6a51",
+            "source": {
+                "path": ".agent-loop/map/search.sqlite",
+                "sha256": "sha256:6a0840ab04c790b5df0b4b19f85c7258ceb80d54f0253901b502554602e12952"
+            },
+            "state": "ready"
+        },
+        "session": {
+            "base_commit": null,
+            "ephemeral": false,
+            "observation_mode": "checked",
+            "owner": "agent-session",
+            "session_id": "2026-08-16-phon-9-r1-92d68061",
+            "source": {
+                "path": ".agent-loop/sessions/2026-08-16-phon-9-r1-92d68061/session.json",
+                "sha256": "sha256:d4b7466db9b02bd17015e8c0a71b4ac20ffed49713030458140c4732a0bc394b"
+            },
+            "state": "done",
+            "task_id": "PHON-9"
+        },
+        "verification": {
+            "contract_revision": 1,
+            "implementation_snapshot": "sha256:8778a9e3434f140dfe9be8dd451cfff56701d899cf02ed27e8b3ae8b6ad0b324",
+            "observation_mode": "checked",
+            "owner": "agent-loop",
+            "run_id": "run:PHON-9:5d76160f1c3a481f",
+            "source": {
+                "path": ".agent-loop/runs/PHON-9/verification.json",
+                "sha256": "sha256:cd6326ba2ab15cfbecec3c78a5d7534e4e938458d50ef13f7dfc8a4e72f06435"
+            },
+            "source_session_id": "2026-08-16-phon-9-r1-92d68061",
+            "state": "passed"
+        }
+    },
+    "run_id": "run:PHON-9:5d76160f1c3a481f",
+    "schema_version": "1.0",
+    "state": "complete",
+    "task_id": "PHON-9"
+}

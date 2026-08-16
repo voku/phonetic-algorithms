@@ -1,0 +1,15 @@
+{
+    "schema_version": "1.0",
+    "kind": "run_learning_decision",
+    "run_id": "run:PHON-8:72c87bd924395152",
+    "decision": "no_durable_learning",
+    "decided_by": "lars",
+    "decided_at": "2026-08-16T15:57:56+00:00",
+    "reason": "Documentation-only run; nothing reusable beyond the already recorded findings.",
+    "finding_ids": [],
+    "follow_up_ref": null,
+    "contract_revision": 1,
+    "implementation_snapshot": "sha256:175e59343b4587a6d4b711c6bee970ade8d247656b42385186988fd1cc05ac78",
+    "validation_evidence_sha256": "sha256:acf26766d1f4e9bef50e4b75afd02d770611c062d15f36b7527781164f5369fb",
+    "review_evidence_sha256": "sha256:2fa05cd1f49ce0f8933ec4b394365bdf32edc3caac0e33ab7140a5ff98b252cd"
+}
