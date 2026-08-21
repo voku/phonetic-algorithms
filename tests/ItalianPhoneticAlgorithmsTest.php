@@ -196,6 +196,9 @@ class ItalianPhoneticAlgorithmsTest extends \PHPUnit\Framework\TestCase
     }
   }
 
+  /**
+   * Verifies that generated phonetic keys contain only upper-case ASCII.
+   */
   public function testOutputIsAlwaysUpperCaseAscii()
   {
     $phonetic = new PhoneticItalian();
@@ -211,6 +214,9 @@ class ItalianPhoneticAlgorithmsTest extends \PHPUnit\Framework\TestCase
     }
   }
 
+  /**
+   * Verifies that empty and non-letter input produces an empty phonetic key.
+   */
   public function testIsEmptyString()
   {
     $phonetic = new PhoneticItalian();
@@ -221,6 +227,9 @@ class ItalianPhoneticAlgorithmsTest extends \PHPUnit\Framework\TestCase
     self::assertSame('', $phonetic->phonetic_word('123'));
   }
 
+  /**
+   * Pins representative Italian words to their expected phonetic keys.
+   */
   public function testItalianPhoneticWord()
   {
     $testArray = [
@@ -247,6 +256,9 @@ class ItalianPhoneticAlgorithmsTest extends \PHPUnit\Framework\TestCase
     }
   }
 
+  /**
+   * Verifies that direct Italian encoding matches the language facade.
+   */
   public function testViaTheLanguageFacade()
   {
     $facade = new Phonetic('it');
