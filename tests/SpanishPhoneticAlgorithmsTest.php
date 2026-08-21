@@ -138,13 +138,13 @@ class SpanishPhoneticAlgorithmsTest extends \PHPUnit\Framework\TestCase
     $phonetic = new PhoneticSpanish();
 
     $pairs = [
-        ['vaca', 'baca'],       // b === v
-        ['casa', 'caza'],       // seseo
-        ['cocer', 'coser'],     // seseo
-        ['llave', 'yave'],      // yeísmo
-        ['hola', 'ola'],        // silent h
-        ['gente', 'jente'],     // g before e === j
-        ['carro', 'caro'],      // collapsed double letter
+        ['vaca', 'baca'],
+        ['casa', 'caza'],
+        ['cocer', 'coser'],
+        ['llave', 'yave'],
+        ['hola', 'ola'],
+        ['gente', 'jente'],
+        ['carro', 'caro'],
     ];
 
     foreach ($pairs as $pair) {
@@ -176,6 +176,9 @@ class SpanishPhoneticAlgorithmsTest extends \PHPUnit\Framework\TestCase
     }
   }
 
+  /**
+   * Verifies that generated phonetic keys contain only upper-case ASCII.
+   */
   public function testOutputIsAlwaysUpperCaseAscii()
   {
     $phonetic = new PhoneticSpanish();
@@ -191,6 +194,9 @@ class SpanishPhoneticAlgorithmsTest extends \PHPUnit\Framework\TestCase
     }
   }
 
+  /**
+   * Verifies that empty and non-letter input produces an empty phonetic key.
+   */
   public function testIsEmptyString()
   {
     $phonetic = new PhoneticSpanish();
@@ -201,6 +207,9 @@ class SpanishPhoneticAlgorithmsTest extends \PHPUnit\Framework\TestCase
     self::assertSame('', $phonetic->phonetic_word('123'));
   }
 
+  /**
+   * Pins representative Spanish words to their expected phonetic keys.
+   */
   public function testSpanishPhoneticWord()
   {
     $testArray = [
@@ -226,6 +235,9 @@ class SpanishPhoneticAlgorithmsTest extends \PHPUnit\Framework\TestCase
     }
   }
 
+  /**
+   * Verifies that direct Spanish encoding matches the language facade.
+   */
   public function testViaTheLanguageFacade()
   {
     $facade = new Phonetic('es');
