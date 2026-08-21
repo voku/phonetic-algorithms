@@ -151,6 +151,9 @@ class DutchPhoneticAlgorithmsTest extends \PHPUnit\Framework\TestCase
     }
   }
 
+  /**
+   * Verifies that generated phonetic keys contain only upper-case ASCII.
+   */
   public function testOutputIsAlwaysUpperCaseAscii()
   {
     $phonetic = new PhoneticDutch();
@@ -166,6 +169,9 @@ class DutchPhoneticAlgorithmsTest extends \PHPUnit\Framework\TestCase
     }
   }
 
+  /**
+   * Verifies that empty and non-letter input produces an empty phonetic key.
+   */
   public function testIsEmptyString()
   {
     $phonetic = new PhoneticDutch();
@@ -176,6 +182,9 @@ class DutchPhoneticAlgorithmsTest extends \PHPUnit\Framework\TestCase
     self::assertSame('', $phonetic->phonetic_word('123'));
   }
 
+  /**
+   * Pins representative Dutch words to their expected phonetic keys.
+   */
   public function testDutchPhoneticWord()
   {
     $testArray = [
@@ -198,6 +207,9 @@ class DutchPhoneticAlgorithmsTest extends \PHPUnit\Framework\TestCase
     }
   }
 
+  /**
+   * Verifies that direct Dutch encoding matches the language facade.
+   */
   public function testViaTheLanguageFacade()
   {
     $facade = new Phonetic('nl');
