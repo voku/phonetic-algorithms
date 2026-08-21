@@ -1,0 +1,15 @@
+{
+    "schema_version": "1.0",
+    "kind": "run_learning_decision",
+    "run_id": "run:PHON-4:e9a4291df8f9d4b1",
+    "decision": "no_durable_learning",
+    "decided_by": "lars",
+    "decided_at": "2026-08-16T15:50:19+00:00",
+    "reason": "Same applied finding as PHON-2/PHON-3; the three test-driven rule corrections are recorded as run decisions, not as a new reusable rule.",
+    "finding_ids": [],
+    "follow_up_ref": null,
+    "contract_revision": 1,
+    "implementation_snapshot": "sha256:2e0e5db1f0bc14c2ac05977a86928dbe7761f2031b5277a8c7a3f597ac67d0dd",
+    "validation_evidence_sha256": "sha256:63d6585bebc52d622313911e142eb251ea2d29f9919b5d4b747ccec82bdaba43",
+    "review_evidence_sha256": "sha256:828206f8e7164ed252fd2b6e692ed40aefcf62d602b6999eebc759f18dbe22ec"
+}

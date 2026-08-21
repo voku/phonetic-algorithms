@@ -9,20 +9,44 @@
 
 ## Description
 
-- "PhoneticGerman"-Class: 
+Fuzzy searching for words that sound alike but are written differently.
 
-A phonetic algorithms for the german language via "Kölner Phonetik": [en.wikipedia.org/wiki/Cologne_phonetics](https://en.wikipedia.org/wiki/Cologne_phonetics)
+| Code | Class                  | Algorithm                                                                                        | Key    |
+| ---- | ---------------------- | ------------------------------------------------------------------------------------------------ | ------ |
+| `de` | `PhoneticGerman`       | "Kölner Phonetik" ([Wikipedia](https://en.wikipedia.org/wiki/Cologne_phonetics))                    | digits |
+| `en` | `PhoneticEnglish`      | "metaphone" ([Wikipedia](https://en.wikipedia.org/wiki/Metaphone)), via the native PHP function     | letters |
+| `es` | `PhoneticSpanish`      | rule set documented in the class                                                                   | letters |
+| `fr` | `PhoneticFrench`       | "SOUNDEX FR" ([roudoudou.com](http://www.roudoudou.com/phonetic.php))                               | letters |
+| `it` | `PhoneticItalian`      | rule set documented in the class                                                                   | letters |
+| `nl` | `PhoneticDutch`        | rule set documented in the class                                                                   | letters |
+| `pl` | `PhoneticPolish`       | rule set documented in the class                                                                   | letters |
+| `pt` | `PhoneticPortuguese`   | rule set documented in the class                                                                   | letters |
 
-- "PhoneticEnglish"-Class: 
+"Kölner Phonetik", "metaphone" and "SOUNDEX FR" are published algorithms and are
+implemented as published.
 
-A phonetic algorithms for the english language via "metaphone": [en.wikipedia.org/wiki/Metaphone](https://en.wikipedia.org/wiki/Metaphone)
+The other languages have no single published standard, so they are **rule sets
+that are documented in the class itself**: every class carries its complete
+sound table in the docblock, and every row of that table is pinned by a test.
+They are built for the mistakes people really make in that language, for example:
 
-- "PhoneticFrench"-Class:
+```php
+(new Phonetic('es'))->phonetic_word('vaca');   // 'BAKA'
+(new Phonetic('es'))->phonetic_word('baca');   // 'BAKA'   - "b" and "v" are one sound
 
-A phonetic algorithms for the french language via "SOUNDEX FR": [www.roudoudou.com/phonetic.php](http://www.roudoudou.com/phonetic.php)
+(new Phonetic('nl'))->phonetic_word('Meijer'); // 'MYER'
+(new Phonetic('nl'))->phonetic_word('Meyer');  // 'MYER'   - "ij", "ei" and "y" are one sound
+
+(new Phonetic('pl'))->phonetic_word('Wałęsa'); // 'VALESA'
+(new Phonetic('pl'))->phonetic_word('Walesa'); // 'VALESA' - a query without diacritics still matches
+```
+
+Codes from different languages are not comparable with each other: pick the
+language of the data you are searching in.
 
 * [Installation](#installation)
 * [Usage](#usage)
+* [Development](#development)
 * [History](#history)
 
 ## Installation
@@ -105,6 +129,23 @@ $phonetic->phonetic_matches('Moelleken', $tests);
 //   'Mölecken'   => 'Moelleken',
 // ]
 ```
+
+## Development
+
+Coding-agent work in this repository runs through
+[`voku/agent-loop`](https://github.com/voku/agent-loop): plan, approve,
+implement, validate with recorded evidence, review, close. The board, the task
+contracts and the run receipts live under `.agent-loop/`.
+
+```sh
+make agent_loop_install
+bin/agent-loop init status
+bin/agent-loop board summary
+```
+
+See [docs/agent-loop.md](docs/agent-loop.md) for the setup and
+[docs/agent-loop-dogfood.md](docs/agent-loop-dogfood.md) for what the workflow
+did and did not catch while these languages were added.
 
 ## History
 See [CHANGELOG](CHANGELOG.md) for the full history of changes.

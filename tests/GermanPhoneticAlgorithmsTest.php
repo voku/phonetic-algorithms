@@ -76,6 +76,16 @@ class GermanPhoneticAlgorithmsTest extends \PHPUnit\Framework\TestCase
       ['ZC', '8'],
       ['SCX', '8'],
       ['ZCX', '8'],
+      # R is NOT part of the "after"-exception, so C keeps its normal code there
+      ['RCA', '74'],
+      ['RCH', '74'],
+      ['RCK', '74'],
+      ['RCO', '74'],
+      ['RCQ', '74'],
+      ['RCU', '74'],
+      ['RCX', '748'],
+      ['RCB', '781'],
+      ['RCE', '78'],
       # C before A, H, K, O, Q, U, X but NOT after S, Z = '4'
       ['BCA', '14'],
       ['BCH', '14'],
@@ -448,9 +458,11 @@ class GermanPhoneticAlgorithmsTest extends \PHPUnit\Framework\TestCase
         'schneider'           => '8627',
         'Wikipedia'           => '3412',
         'Kirsche'             => '478',
-        'Kirche'              => '478',
-        'Kirchä'              => '478',
-        'Kircha'              => '478',
+        // "C" after "R" is not an exception in the code table, so "Kirche" and
+        // "Kirsche" stay distinguishable: "C" before "H" is "4" here.
+        'Kirche'              => '474',
+        'Kirchä'              => '474',
+        'Kircha'              => '474',
         'Vogel'               => '345',
         'Fogel'               => '345',
         'Wolke'               => '354',

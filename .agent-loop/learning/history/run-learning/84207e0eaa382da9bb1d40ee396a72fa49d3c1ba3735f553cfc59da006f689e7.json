@@ -1,0 +1,15 @@
+{
+    "schema_version": "1.0",
+    "kind": "run_learning_decision",
+    "run_id": "run:PHON-2:32344436ccbec586",
+    "decision": "no_durable_learning",
+    "decided_by": "lars",
+    "decided_at": "2026-08-16T15:41:57+00:00",
+    "reason": "The reusable lesson (cross-check and pin every rule-table row) is already recorded as finding.2026-08-16.385c4b from PHON-1 and was applied here; nothing new to promote.",
+    "finding_ids": [],
+    "follow_up_ref": null,
+    "contract_revision": 1,
+    "implementation_snapshot": "sha256:b40c2e5e9f0819ddbc507759cacc12edf8010a621cecba9be52836d2bedb3313",
+    "validation_evidence_sha256": "sha256:1c062f614bd53a0518b0a42979bd43d3dc93990ab8a1b115a5f713c81ee76baa",
+    "review_evidence_sha256": "sha256:b8819315ce695f16a4e5b2d72513d76863d9e93295d613ac618fdfc066d85f3c"
+}

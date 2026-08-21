@@ -10,3 +10,21 @@ build/
 vendor
 composer.lock
 
+# agent-loop tooling (see docs/agent-loop.md)
+/tools/*/vendor/
+
+# Host-specific projections are generated from the pinned agent-loop package.
+# AGENTS.md / CLAUDE.md remain the tracked repository routers.
+/.claude/
+/.codex/
+/.agents/
+/.github/skills/
+/.github/agents/
+
+# agent-loop: durable repository state remains tracked; derived state does not.
+# Keep todo/, tasks/, contracts/, runs/, learning/ and init.json in Git.
+/.agent-loop/map/
+/.agent-loop/recall/
+/.agent-loop/sessions/
+/.agent-loop/edit/
+/.agent-loop/tool-inventory.json

@@ -39,7 +39,7 @@ final class PhoneticGerman implements PhoneticInterface
    * M,N                                      6
    * R                                        7
    * S,Z                                      8
-   * C              after R,S,Z               8
+   * C              after S,Z                 8
    * C              at the begin,
    *                exception before
    *                A,H,K,L,O,Q,R,U,X         8
@@ -47,6 +47,12 @@ final class PhoneticGerman implements PhoneticInterface
    * D,T            before C,S,Z              8
    * X              after C,K,Q               8
    * --------------------------------------------
+   *
+   * Known and deliberate deviations from the table above:
+   * - a word that consists of a single "C" is coded as "4" instead of "8",
+   *   because there is no following letter that could select a rule.
+   * - "ä", "ö", "ü" and "ß" are folded to "a", "o", "u" and "ss", and "ph" is
+   *   folded to "f", before the table is applied.
    *
    * @param string $word
    *
@@ -195,7 +201,6 @@ final class PhoneticGerman implements PhoneticInterface
               case 'u':
               case 'x':
                 switch ($char[$x - 1]) {
-                  case 'r':
                   case 's':
                   case 'z':
                     $code .= '8';

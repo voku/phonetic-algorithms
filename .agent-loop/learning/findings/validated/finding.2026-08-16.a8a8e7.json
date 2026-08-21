@@ -1,0 +1,21 @@
+{
+  "id": "finding.2026-08-16.a8a8e7",
+  "task_id": "PHON-5",
+  "session": "2026-08-16-phon-5-r1-cc93f524",
+  "created_at": "2026-08-16T15:53:34+00:00",
+  "created_by": "agent",
+  "scope": ["src/voku/helper"],
+  "observation": "PhoneticGerman rewrites the german umlauts into digraphs before UTF8::to_ascii, and the first Polish draft copied that pattern for the polish diacritics. It was wrong here: a polish query is typically typed WITHOUT diacritics, so an expanded 'a-ogonek' -> 'on' can never meet the plain 'a' the user types.",
+  "evidence": [
+    {"type": "file_reference", "path": "src/voku/helper/PhoneticGerman.php", "line": 88},
+    {"type": "file_reference", "path": "src/voku/helper/PhoneticPolish.php", "line": 70},
+    {"type": "file_reference", "path": "tests/PolishPhoneticAlgorithmsTest.php", "line": 128}
+  ],
+  "hypothesis": "Whether a diacritic should be expanded or folded depends on how users type the language, not on what the letter sounds like.",
+  "validated_conclusion": "Before adding a language, decide per diacritic whether the common query contains it. Fold it to the plain letter when users usually omit it (polish, and every keyboard-hostile diacritic); expand it into a digraph only when the plain form is unusual and the sound is a real distinction (german 'a-umlaut' -> 'ae', spanish 'n-tilde' -> 'ni'). Copying the german pre-substitution pattern by default produces keys that never match real queries.",
+  "confidence": "high",
+  "validation_status": "validated",
+  "status": "validated",
+  "sensitivity": "public",
+  "pattern_key": "phonetic.diacritic_fold_or_expand"
+}

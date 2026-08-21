@@ -187,6 +187,96 @@ class FrenchPhoneticAlgorithmsTest extends \PHPUnit\Framework\TestCase
   }
 
   /**
+   * "SOUNDEX FR" produces a readable key, but it is still a key: only
+   * upper-case ascii letters may leave the algorithm.
+   */
+  public function testOutputIsAlwaysUpperCaseAscii()
+  {
+    $phonetic = new PhoneticFrench();
+
+    $words = [
+        'Château',
+        'Élève',
+        'Cœur',
+        'Français',
+        'Noël',
+        'Müller',
+        'garçon',
+        'aïeul',
+        '中文空白',
+    ];
+
+    foreach ($words as $word) {
+      $code = $phonetic->phonetic_word($word);
+
+      self::assertSame(
+          1,
+          \preg_match('/^[A-Z]*$/', $code),
+          'tested: ' . $word . ' => ' . $code
+      );
+    }
+  }
+
+  /**
+   * Accents carry no phonetic weight for this algorithm, so the accented and
+   * the un-accented spelling of the same word have to collapse into one key.
+   */
+  public function testAccentsAreFolded()
+  {
+    $phonetic = new PhoneticFrench();
+
+    $pairs = [
+        ['Château', 'Chateau'],
+        ['Élève', 'Eleve'],
+        ['Noël', 'Noel'],
+        ['théâtre', 'theatre'],
+        ['naïve', 'naive'],
+        ['sûr', 'sur'],
+    ];
+
+    foreach ($pairs as [$accented, $plain]) {
+      self::assertSame(
+          $phonetic->phonetic_word($plain),
+          $phonetic->phonetic_word($accented),
+          'tested: ' . $accented . ' vs. ' . $plain
+      );
+    }
+  }
+
+  /**
+   * The cedilla is not an accent: it changes the sound, so "ç" and "c" must NOT
+   * collapse into the same key in front of A, O and U.
+   */
+  public function testCedillaIsNotFoldedAwayLikeAnAccent()
+  {
+    $phonetic = new PhoneticFrench();
+
+    foreach ([['Français', 'Francais'], ['garçon', 'garcon'], ['reçu', 'recu']] as [$cedilla, $plain]) {
+      self::assertNotSame(
+          $phonetic->phonetic_word($plain),
+          $phonetic->phonetic_word($cedilla),
+          'tested: ' . $cedilla . ' vs. ' . $plain
+      );
+    }
+  }
+
+  /**
+   * The algorithm is a pure function: the same input must always produce the
+   * same key, also when the instance is reused.
+   */
+  public function testIsStableForRepeatedCalls()
+  {
+    $phonetic = new PhoneticFrench();
+
+    foreach (['Bordeaux', 'Renault', 'Peugeot', 'Moelleken'] as $word) {
+      $first = $phonetic->phonetic_word($word);
+
+      self::assertSame($first, $phonetic->phonetic_word($word), 'tested: ' . $word);
+      self::assertSame($first, (new PhoneticFrench())->phonetic_word($word), 'tested: ' . $word);
+    }
+  }
+
+  /**
    * @param string $expected
    * @param string $word
    *

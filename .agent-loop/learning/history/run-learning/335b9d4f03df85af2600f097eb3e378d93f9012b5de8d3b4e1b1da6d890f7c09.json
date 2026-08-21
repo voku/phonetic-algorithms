@@ -1,0 +1,17 @@
+{
+    "schema_version": "1.0",
+    "kind": "run_learning_decision",
+    "run_id": "run:PHON-5:f0b01139163a1fa4",
+    "decision": "findings_recorded",
+    "decided_by": "lars",
+    "decided_at": "2026-08-16T15:53:34+00:00",
+    "reason": "Fold-vs-expand for diacritics is a real, reusable decision for every further language (PHON-6 portuguese, PHON-7 swedish) and the german precedent points the wrong way for polish.",
+    "finding_ids": [
+        "finding.2026-08-16.a8a8e7"
+    ],
+    "follow_up_ref": null,
+    "contract_revision": 1,
+    "implementation_snapshot": "sha256:0d369c9762cbc4d084f252036aed368b0a73745dce93140dff3562c811089acb",
+    "validation_evidence_sha256": "sha256:7e1905361152b88fa63c78bffea9706e088230f7038600e49c4a93f890361088",
+    "review_evidence_sha256": "sha256:339b03ed4a06f07e26c374bfe15ec3ed28db65652a8ebaebb573840317807058"
+}

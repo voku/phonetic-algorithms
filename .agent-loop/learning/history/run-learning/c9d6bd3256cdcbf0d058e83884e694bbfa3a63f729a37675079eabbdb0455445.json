@@ -1,0 +1,15 @@
+{
+    "schema_version": "1.0",
+    "kind": "run_learning_decision",
+    "run_id": "run:PHON-3:50ede49613978cc2",
+    "decision": "no_durable_learning",
+    "decided_by": "lars",
+    "decided_at": "2026-08-16T15:47:06+00:00",
+    "reason": "Applied finding.2026-08-16.385c4b again (pin every rule-table row); the to_ascii pre-substitution trick is already visible in PhoneticGerman and now in two more classes, so it needs no separate durable note yet.",
+    "finding_ids": [],
+    "follow_up_ref": null,
+    "contract_revision": 1,
+    "implementation_snapshot": "sha256:ced9ca65bb453a2eca6aadd7be05a05ac7a65c874b6363153f3361b122601b98",
+    "validation_evidence_sha256": "sha256:17500b9aca08c1f649a113eee468938a1d9d71afdce2a520173488c5c0b7afab",
+    "review_evidence_sha256": "sha256:ba40fd94ffdfa22aee73b69300204960ffa22081c29e1efb905e7d21e404db98"
+}

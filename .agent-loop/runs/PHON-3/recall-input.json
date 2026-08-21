@@ -1,0 +1,10 @@
+{
+    "contract": {
+        "path": "contract.json",
+        "revision": 1,
+        "sha256": "sha256:b833b82176cccc6979fc805f8bc6b3e3aa78229218944ee58c97af20b0e1c79a"
+    },
+    "kind": "governed_recall_input",
+    "run_id": "run:PHON-3:50ede49613978cc2",
+    "schema_version": "1.0"
+}
