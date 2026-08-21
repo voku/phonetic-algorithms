@@ -170,6 +170,9 @@ class PolishPhoneticAlgorithmsTest extends \PHPUnit\Framework\TestCase
     }
   }
 
+  /**
+   * Verifies that generated phonetic keys contain only upper-case ASCII.
+   */
   public function testOutputIsAlwaysUpperCaseAscii()
   {
     $phonetic = new PhoneticPolish();
@@ -185,6 +188,9 @@ class PolishPhoneticAlgorithmsTest extends \PHPUnit\Framework\TestCase
     }
   }
 
+  /**
+   * Verifies that empty and non-letter input produces an empty phonetic key.
+   */
   public function testIsEmptyString()
   {
     $phonetic = new PhoneticPolish();
@@ -195,6 +201,9 @@ class PolishPhoneticAlgorithmsTest extends \PHPUnit\Framework\TestCase
     self::assertSame('', $phonetic->phonetic_word('123'));
   }
 
+  /**
+   * Pins representative Polish words to their expected phonetic keys.
+   */
   public function testPolishPhoneticWord()
   {
     $testArray = [
@@ -217,6 +226,9 @@ class PolishPhoneticAlgorithmsTest extends \PHPUnit\Framework\TestCase
     }
   }
 
+  /**
+   * Verifies that direct Polish encoding matches the language facade.
+   */
   public function testViaTheLanguageFacade()
   {
     $facade = new Phonetic('pl');
