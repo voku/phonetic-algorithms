@@ -138,13 +138,13 @@ class SpanishPhoneticAlgorithmsTest extends \PHPUnit\Framework\TestCase
     $phonetic = new PhoneticSpanish();
 
     $pairs = [
-        ['vaca', 'baca'],
-        ['casa', 'caza'],
-        ['cocer', 'coser'],
-        ['llave', 'yave'],
-        ['hola', 'ola'],
-        ['gente', 'jente'],
-        ['carro', 'caro'],
+        ['vaca', 'baca'],       // b === v
+        ['casa', 'caza'],       // seseo
+        ['cocer', 'coser'],     // seseo
+        ['llave', 'yave'],      // yeísmo
+        ['hola', 'ola'],        // silent h
+        ['gente', 'jente'],     // g before e === j
+        ['carro', 'caro'],      // collapsed double letter
     ];
 
     foreach ($pairs as $pair) {
