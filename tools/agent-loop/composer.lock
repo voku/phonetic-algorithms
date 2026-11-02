@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ca671973e34b58ed54679a989671f213",
+    "content-hash": "9c641061c2fe90f056856a33f75eadb9",
     "packages": [
         {
             "name": "doctrine/deprecations",
@@ -1182,16 +1182,16 @@
         },
         {
             "name": "voku/agent-loop",
-            "version": "0.20.78",
+            "version": "0.20.80",
             "source": {
                 "type": "git",
                 "url": "https://github.com/voku/agent-loop.git",
-                "reference": "effd40855d28b1656e3c22856b73114b1e32f745"
+                "reference": "d47377f5a45e6c27651cf458194d72bc8dc4ba9c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/voku/agent-loop/zipball/effd40855d28b1656e3c22856b73114b1e32f745",
-                "reference": "effd40855d28b1656e3c22856b73114b1e32f745",
+                "url": "https://api.github.com/repos/voku/agent-loop/zipball/d47377f5a45e6c27651cf458194d72bc8dc4ba9c",
+                "reference": "d47377f5a45e6c27651cf458194d72bc8dc4ba9c",
                 "shasum": ""
             },
             "require": {
@@ -1212,7 +1212,8 @@
                 "phpstan/phpstan": "^2.1",
                 "phpunit/phpunit": "^12.0.1",
                 "symfony/yaml": "^7.4",
-                "voku/itp-context": "^0.4.0"
+                "voku/itp-context": "^0.4.0",
+                "voku/phpstan-agent-format": "^0.3.1"
             },
             "suggest": {
                 "voku/housekeeping": "Standalone cron runner to auto-run agent-loop maintenance tasks against a target repository."
@@ -1264,8 +1265,8 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-11-01T18:46:24+00:00",
-            "published-time": "2026-11-01T18:47:40+00:00"
+            "time": "2026-11-02T14:55:02+00:00",
+            "published-time": "2026-11-02T14:56:25+00:00"
         },
         {
             "name": "voku/agent-map",
