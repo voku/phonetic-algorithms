@@ -5,7 +5,7 @@
   "license": "MIT",
   "require": {
     "php": "^8.3",
-    "voku/agent-loop": "0.20.84"
+    "voku/agent-loop": "0.20.89"
   },
   "config": {
     "allow-plugins": false,
