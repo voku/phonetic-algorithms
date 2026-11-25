@@ -84,7 +84,7 @@ final class PhoneticFrench implements PhoneticInterface
    *
    * @return string
    */
-  public function phonetic_word($word): string
+  public function phonetic_word($word, $max_length = 16): string
   {
     $accents = [
         'É' => 'E',
@@ -161,12 +161,12 @@ final class PhoneticFrench implements PhoneticInterface
 
     $sBack = $word; // on sauve le code (utilisé pour les mots très courts)
 
-    $word = \preg_replace('`O[O]+`', 'OU', $word);       // pré traitement OO... -> OU
-    $word = \str_replace('SAOU', 'SOU', $word);              // pré traitement SAOU -> SOU
-    $word = \str_replace('OES', 'OS', $word);                // pré traitement OES -> OS
-    $word = \str_replace('CCH', 'K', $word);                 // pré traitement CCH -> K
-    $word = \preg_replace('`CC([IYE])`', 'KS$1', $word); // CCI CCY CCE
-    $word = \preg_replace('`(.)\1`', '$1', $word);       // supression des répétitions
+    $word = \preg_replace('`O[O]+`', 'OU', $word);          // pré traitement OO... -> OU
+    $word = \str_replace('SAOU', 'SOU', $word);             // pré traitement SAOU -> SOU
+    $word = \str_replace('OES', 'OS', $word);               // pré traitement OES -> OS
+    $word = \str_replace('CCH', 'K', $word);                // pré traitement CCH -> K
+    $word = \preg_replace('`CC([IYE])`', 'KS$1', $word);    // CCI CCY CCE
+    $word = \preg_replace('`([^I])(\1+)`', '$1', $word);    // supression des répétitions. Sauf II, III cas de la numération romaine (i.e. JEANPAULI, JEANPAULII).
 
     // quelques cas particuliers
     if ($word == "CD") {
@@ -718,7 +718,7 @@ final class PhoneticFrench implements PhoneticInterface
     $word = \preg_replace('`^PAIEM`', 'PAIM', $word);       // PAIE -> PAI
     $word = \preg_replace('`([^NTB])EF$`', '\1', $word);    // F muet en fin de mot
 
-    $word = \preg_replace('`(.)\1`', '$1', $word);          // supression des répétitions (suite à certains remplacements)
+    $word = \preg_replace('`([^I])(\1+)`', '$1', $word);    // supression des répétitions (suite à certains remplacements). Sauf II, III cas de la numération romaine (i.e. JEANPAULI, JEANPAULII).
 
     // cas particuliers, bah au final, je n'en ai qu'un ici
     $convPartIn = ['FUEL'];
@@ -756,7 +756,7 @@ final class PhoneticFrench implements PhoneticInterface
 
     // Je limite à 16 caractères mais vous faites comme vous voulez!
     if (\strlen($word) > 1) {
-      return \substr($word, 0, 16);
+      return \substr($word, 0, $max_length);
     }
 
     return '';
